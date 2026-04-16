@@ -1,0 +1,488 @@
+import type { MenuItem, Category } from "@/types/menu";
+
+export const categories: Category[] = [
+  { id: 1, name: "荤菜" },
+  { id: 2, name: "素菜" },
+  { id: 3, name: "主食" },
+  { id: 4, name: "饮品" },
+];
+
+export const menuItems: MenuItem[] = [
+  // {
+  //   id: 1,
+  //   categoryId: 1,
+  //   name: "招牌牛肉汉堡",
+  //   desc: "多汁牛肉饼 + 特制酱",
+  //   image:
+  //     "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80",
+  //   cookTime: "约 15 分钟",
+  //   difficulty: "简单",
+  //   ingredients: [
+  //     { name: "牛肉饼", amount: "1块" },
+  //     { name: "面包胚", amount: "1个" },
+  //     { name: "生菜", amount: "2片" },
+  //     { name: "番茄", amount: "3片" },
+  //     { name: "芝士", amount: "1片" },
+  //   ],
+  //   seasonings: [
+  //     { name: "黑胡椒", amount: "2g" },
+  //     { name: "盐", amount: "1g" },
+  //     { name: "橄榄油", amount: "10ml" },
+  //     { name: "汉堡酱", amount: "15g" },
+  //   ],
+  //   steps: [
+  //     { step: 1, content: "牛肉饼两面撒盐和黑胡椒，静置5分钟" },
+  //     { step: 2, content: "平底锅加橄榄油，中火煎牛肉饼每面3分钟" },
+  //     { step: 3, content: "面包胚切半，内侧朝下煎至微黄" },
+  //     {
+  //       step: 4,
+  //       content: "组装：底部面包→汉堡酱→生菜→番茄→牛肉饼→芝士→顶面包",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: 2,
+  //   categoryId: 1,
+  //   name: "香脆炸鸡块",
+  //   desc: "外酥里嫩，搭配甜辣酱",
+  //   image:
+  //     "https://images.unsplash.com/photo-1562967914-608f82629710?w=500&q=80",
+  //   cookTime: "约 20 分钟",
+  //   difficulty: "中等",
+  //   ingredients: [
+  //     { name: "鸡腿肉", amount: "300g" },
+  //     { name: "淀粉", amount: "50g" },
+  //     { name: "鸡蛋", amount: "1个" },
+  //     { name: "面包糠", amount: "100g" },
+  //   ],
+  //   seasonings: [
+  //     { name: "盐", amount: "3g" },
+  //     { name: "白胡椒", amount: "2g" },
+  //     { name: "蒜粉", amount: "5g" },
+  //     { name: "甜辣酱", amount: "30g" },
+  //   ],
+  //   steps: [
+  //     { step: 1, content: "鸡腿肉切块，加盐、白胡椒、蒜粉腌制15分钟" },
+  //     { step: 2, content: "依次裹上淀粉→蛋液→面包糠" },
+  //     { step: 3, content: "油温170°C，下锅炸至金黄（约5分钟）" },
+  //     { step: 4, content: "捞出沥油，搭配甜辣酱食用" },
+  //   ],
+  // },
+  // {
+  //   id: 4,
+  //   categoryId: 2,
+  //   name: "经典蔬菜沙拉",
+  //   desc: "健康低卡，清爽解腻",
+  //   image:
+  //     "https://images.unsplash.com/photo-1512621843614-b3e18997d18e?w=500&q=80",
+  //   cookTime: "约 10 分钟",
+  //   difficulty: "简单",
+  //   ingredients: [
+  //     { name: "生菜", amount: "100g" },
+  //     { name: "小番茄", amount: "8颗" },
+  //     { name: "黄瓜", amount: "半根" },
+  //     { name: "玉米粒", amount: "50g" },
+  //   ],
+  //   seasonings: [
+  //     { name: "橄榄油", amount: "15ml" },
+  //     { name: "柠檬汁", amount: "10ml" },
+  //     { name: "盐", amount: "1g" },
+  //     { name: "黑胡椒", amount: "适量" },
+  //   ],
+  //   steps: [
+  //     { step: 1, content: "生菜洗净撕成小块，沥干水分" },
+  //     { step: 2, content: "小番茄对半切，黄瓜切片" },
+  //     { step: 3, content: "所有蔬菜放入大碗，加入玉米粒" },
+  //     { step: 4, content: "淋上橄榄油和柠檬汁，撒盐和黑胡椒拌匀即可" },
+  //   ],
+  // },
+  // {
+  //   id: 5,
+  //   categoryId: 3,
+  //   name: "黑椒牛柳意面",
+  //   desc: "意式风情，黑椒浓郁",
+  //   image:
+  //     "https://images.unsplash.com/photo-1621996311239-f9c3c5b8e967?w=500&q=80",
+  //   cookTime: "约 25 分钟",
+  //   difficulty: "中等",
+  //   ingredients: [
+  //     { name: "意面", amount: "150g" },
+  //     { name: "牛柳", amount: "200g" },
+  //     { name: "洋葱", amount: "半个" },
+  //     { name: "青椒", amount: "1个" },
+  //   ],
+  //   seasonings: [
+  //     { name: "黑胡椒酱", amount: "30g" },
+  //     { name: "蚝油", amount: "15ml" },
+  //     { name: "生抽", amount: "10ml" },
+  //     { name: "黄油", amount: "20g" },
+  //   ],
+  //   steps: [
+  //     { step: 1, content: "意面按包装说明煮至八成熟，捞出备用" },
+  //     { step: 2, content: "牛柳切条，加生抽腌制5分钟" },
+  //     { step: 3, content: "黄油融化，爆香洋葱丝，加入牛柳快炒" },
+  //     { step: 4, content: "加入青椒、意面、黑胡椒酱和蚝油，翻炒均匀即可" },
+  //   ],
+  // },
+  // {
+  //   id: 3,
+  //   categoryId: 4,
+  //   name: "冰镇可乐",
+  //   desc: "解渴神器，夏日必配",
+  //   image:
+  //     "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&q=80",
+  //   cookTime: "约 2 分钟",
+  //   difficulty: "简单",
+  //   ingredients: [
+  //     { name: "可乐", amount: "330ml" },
+  //     { name: "冰块", amount: "适量" },
+  //     { name: "柠檬片", amount: "1片" },
+  //   ],
+  //   seasonings: [],
+  //   steps: [
+  //     { step: 1, content: "杯中加入冰块" },
+  //     { step: 2, content: "倒入冰镇可乐" },
+  //     { step: 3, content: "放上一片柠檬装饰即可" },
+  //   ],
+  // },
+  // {
+  //   id: 6,
+  //   categoryId: 1,
+  //   name: "红烧牛肉",
+  //   desc: "软烂入味，香气四溢",
+  //   image: "/static/images/69d99de245b0a0e0a8e7f9fa_0_0.jpg",
+  //   cookTime: "约 3 小时",
+  //   difficulty: "复杂",
+  //   ingredients: [{ name: "牛肋条", amount: "2斤" }],
+  //   seasonings: [
+  //     { name: "大葱", amount: "一段" },
+  //     { name: "姜片", amount: "三片" },
+  //   ],
+  //   steps: [
+  //     // 请在这里补充步骤
+  //   ],
+  // },
+  {
+    id: 7,
+    categoryId: 1,
+    name: "猪蹄鸡爪煲",
+    desc: "酱香浓郁、软烂脱骨",
+    image: "/static/images/zhutui-jizhua.jpg",
+    cookTime: "约 2 小时",
+    difficulty: "中等",
+    ingredients: [
+      { name: "猪蹄", amount: "1只" },
+      { name: "鸡爪", amount: "8-10只" },
+    ],
+    seasonings: [
+      { name: "葱段", amount: "3根" },
+      { name: "姜片", amount: "5片" },
+      { name: "蒜瓣", amount: "6瓣" },
+      { name: "干辣椒", amount: "5-6个" },
+      { name: "小米辣", amount: "适量" },
+      { name: "八角", amount: "1颗" },
+      { name: "桂皮", amount: "1小段" },
+      { name: "香叶", amount: "2片" },
+      { name: "料酒", amount: "2勺" },
+      { name: "生抽", amount: "3勺" },
+      { name: "老抽", amount: "1勺" },
+      { name: "冰糖", amount: "5-6颗" },
+      { name: "盐", amount: "适量" },
+    ],
+    steps: [
+      {
+        step: 1,
+        content: "猪蹄剁块、鸡爪剪指甲，冷水下锅加姜料酒焯水3分钟，捞出洗净",
+      },
+      {
+        step: 2,
+        content: "热油爆香姜蒜葱、干辣椒、八角桂皮香叶，下猪蹄大火翻炒2分钟",
+      },
+      {
+        step: 3,
+        content:
+          "加生抽老抽冰糖炒至上色，倒入开水没过猪蹄，加1小勺醋，大火烧开转中小火炖1.5小时",
+      },
+      {
+        step: 4,
+        content:
+          "放入鸡爪继续炖30分钟至软烂，大火收汁，加盐调味，撒小米辣和葱段出锅",
+      },
+    ],
+  },
+  {
+    id: 8,
+    categoryId: 1,
+    name: "红烧牛肉",
+    desc: "香辣软烂、酱香浓郁",
+    image: "/static/images/hongshao-niurou.jpg",
+    cookTime: "约 2.5 小时",
+    difficulty: "中等",
+    ingredients: [
+      { name: "牛腩/牛肋条", amount: "2.5斤" },
+      { name: "干辣椒", amount: "40g" },
+    ],
+    seasonings: [
+      { name: "郫县豆瓣酱", amount: "1.5勺" },
+      { name: "葱", amount: "适量" },
+      { name: "姜", amount: "适量" },
+      { name: "蒜", amount: "适量" },
+      { name: "香叶", amount: "适量" },
+      { name: "薄桂皮", amount: "1小段" },
+      { name: "草果", amount: "1个(去籽)" },
+      { name: "八角", amount: "适量" },
+      { name: "山奈", amount: "适量" },
+      { name: "小茴香", amount: "适量" },
+      { name: "花椒", amount: "适量" },
+      { name: "生抽", amount: "适量" },
+      { name: "白胡椒粉", amount: "适量" },
+      { name: "鸡精", amount: "适量" },
+      { name: "味精", amount: "适量" },
+      { name: "冰糖", amount: "适量" },
+      { name: "盐", amount: "出锅前加" },
+    ],
+    steps: [
+      { step: 1, content: "牛肉切两指宽大块，冷水下锅焯水，捞出温水洗净沥干" },
+      {
+        step: 2,
+        content:
+          "干辣椒40g开水泡5分钟切碎成糍粑辣椒（糍粑辣椒没有可以不放），豆瓣酱1.5勺切碎备用",
+      },
+      {
+        step: 3,
+        content:
+          "热油下葱姜蒜大火炒香，转中火炸至微黄，转小火下糍粑辣椒+豆瓣酱炒2分钟至无生味",
+      },
+      {
+        step: 4,
+        content: "下香料炒香，倒入牛肉大火翻炒2分钟炒干水汽，沿锅边加开水煮沸",
+      },
+      {
+        step: 5,
+        content:
+          "转入高压锅，加水没过牛肉，加生抽、白胡椒粉、鸡精、味精、冰糖(暂不加盐)",
+      },
+      {
+        step: 6,
+        content:
+          "电高压锅选牛羊肉模式；燃气高压锅上汽后小火30分钟；无高压锅则小火炖2小时以上",
+      },
+      {
+        step: 7,
+        content:
+          "捞出牛肉过滤汤汁去料渣，汤汁回锅加盐调味，牛肉浸汤汁里，撒香菜出锅",
+      },
+    ],
+  },
+  {
+    id: 9,
+    categoryId: 1,
+    name: "鸡公煲",
+    desc: "香辣入味、肉质滑嫩",
+    image: "/static/images/jigongbao.jpg",
+    cookTime: "约 30 分钟",
+    difficulty: "中等",
+    ingredients: [
+      { name: "去骨鸡腿", amount: "4个" },
+      { name: "青红辣椒", amount: "适量" },
+      { name: "香芹", amount: "适量" },
+      { name: "洋葱", amount: "适量" },
+      { name: "香菇", amount: "适量" },
+      { name: "大蒜", amount: "适量" },
+      { name: "姜片", amount: "适量" },
+    ],
+    seasonings: [
+      { name: "十三香", amount: "适量" },
+      { name: "香叶", amount: "适量" },
+      { name: "白芷", amount: "适量" },
+      { name: "花椒", amount: "适量" },
+      { name: "柱侯酱", amount: "2勺" },
+      { name: "海鲜酱", amount: "1勺" },
+      { name: "蚝油", amount: "3勺" },
+      { name: "老抽", amount: "半勺" },
+      { name: "鸡精", amount: "1茶勺" },
+      { name: "食用油", amount: "1勺(腌制用)" },
+      { name: "火锅底料", amount: "1/3块" },
+    ],
+    steps: [
+      { step: 1, content: "鸡腿去骨洗净吸干水分，切成3cm见方块状" },
+      {
+        step: 2,
+        content:
+          "加十三香、香叶、白芷、花椒、柱侯酱2勺、海鲜酱1勺、蚝油3勺、老抽半勺、鸡精1茶勺抓匀，加1勺食用油腌20分钟",
+      },
+      {
+        step: 3,
+        content: "青红辣椒、香芹、洋葱、香菇、大蒜切好备用，姜片单独放置",
+      },
+      { step: 4, content: "起锅烧油，姜片煎至焦边，加1/3块火锅底料融化" },
+      { step: 5, content: "放入鸡肉中火翻炒4分钟至紧实滑嫩，全程不加水" },
+      { step: 6, content: "加5勺清水或啤酒，小火焖3分钟" },
+      {
+        step: 7,
+        content:
+          "倒入配菜大火翻炒1分钟即成干锅鸡公煲（加开水可煮配菜和方便面）",
+      },
+    ],
+  },
+  {
+    id: 10,
+    categoryId: 4,
+    name: "草莓风味调酒",
+    desc: "甜香好喝、颜值超高",
+    image: "/static/images/strawberry-cocktail.jpg",
+    cookTime: "约 2 分钟",
+    difficulty: "简单",
+    ingredients: [
+      { name: "草莓类预调酒/果酒", amount: "1瓶" },
+      { name: "搭配基底饮料", amount: "适量" },
+    ],
+    seasonings: [],
+    steps: [
+      { step: 1, content: "准备草莓类预调酒或果酒一瓶" },
+      { step: 2, content: "按喜好加入适量基底饮料调配" },
+      { step: 3, content: "加冰摇匀或搅拌均匀即可饮用" },
+    ],
+  },
+  {
+    id: 11,
+    categoryId: 4,
+    name: "冰川气泡酒",
+    desc: "清爽气泡、冰川颜值",
+    image: "/static/images/glacier-sparkling.jpg",
+    cookTime: "约 2 分钟",
+    difficulty: "简单",
+    ingredients: [
+      { name: "气泡酒", amount: "1瓶" },
+      { name: "奶/乳类饮品", amount: "适量" },
+    ],
+    seasonings: [],
+    steps: [
+      { step: 1, content: "准备气泡酒一瓶" },
+      { step: 2, content: "按喜好加入适量奶或乳类饮品" },
+      { step: 3, content: "轻轻搅拌，加冰即可呈现冰川效果" },
+    ],
+  },
+  {
+    id: 12,
+    categoryId: 4,
+    name: "茉莉椰青",
+    desc: "茉莉清香、清甜不腻",
+    image: "/static/images/jasmine-coconut.jpg",
+    cookTime: "约 1 分钟",
+    difficulty: "简单",
+    ingredients: [
+      { name: "茉莉花茶", amount: "1瓶" },
+      { name: "椰青", amount: "1个" },
+    ],
+    seasonings: [],
+    steps: [
+      { step: 1, content: "准备茉莉花茶饮料一瓶" },
+      { step: 2, content: "打开新鲜椰青，倒出椰汁" },
+      { step: 3, content: "将茉莉花茶与椰青按1:1混合，加冰即可" },
+    ],
+  },
+  {
+    id: 13,
+    categoryId: 3,
+    name: "香喷喷大米饭",
+    desc: "粒粒分明、香软可口",
+    image: "/static/images/rice.jpg",
+    cookTime: "约 30 分钟",
+    difficulty: "简单",
+    ingredients: [
+      { name: "大米", amount: "2杯" },
+      { name: "清水", amount: "适量" },
+    ],
+    seasonings: [
+      { name: "食用油", amount: "几滴(可选)" },
+      { name: "盐", amount: "少许(可选)" },
+    ],
+    steps: [
+      { step: 1, content: "大米用清水淘洗2-3遍，去除表面淀粉" },
+      {
+        step: 2,
+        content: "米和水按1:1.2比例放入电饭煲（或手指测法：水没过米约1节指节）",
+      },
+      { step: 3, content: "浸泡20分钟让米粒充分吸水（可选）" },
+      { step: 4, content: "开始煮饭，煮好后焖10分钟再开盖" },
+      { step: 5, content: "用饭勺轻轻松散米饭，盛出即可" },
+    ],
+  },
+  {
+    id: 14,
+    categoryId: 2,
+    name: "西红柿炒鸡蛋",
+    desc: "酸甜开胃、经典家常",
+    image: "/static/images/tomato-egg.jpg",
+    cookTime: "约 10 分钟",
+    difficulty: "简单",
+    ingredients: [
+      { name: "西红柿", amount: "2个" },
+      { name: "鸡蛋", amount: "3个" },
+    ],
+    seasonings: [
+      { name: "食用油", amount: "适量" },
+      { name: "盐", amount: "适量" },
+      { name: "白糖", amount: "适量" },
+      { name: "生抽", amount: "适量" },
+      { name: "蚝油", amount: "适量" },
+      { name: "香油", amount: "少许" },
+      { name: "葱花", amount: "少许" },
+    ],
+    steps: [
+      { step: 1, content: "西红柿切块备用，鸡蛋打散" },
+      { step: 2, content: "锅烧热，热锅凉油，加入鸡蛋翻炒至凝固盛起备用" },
+      { step: 3, content: "不用洗锅，直接加入西红柿翻炒，加入适量盐和适量糖" },
+      { step: 4, content: "西红柿出水之后，加入生抽适量和蚝油适量" },
+      {
+        step: 5,
+        content: "最后加入炒好的鸡蛋，翻炒均匀，撒上葱花，淋上香油出锅",
+      },
+    ],
+  },
+  {
+    id: 15,
+    categoryId: 2,
+    name: "炒合菜",
+    desc: "鲜香入味、快手家常",
+    image: "/static/images/chaohacai.jpg",
+    cookTime: "约 15 分钟",
+    difficulty: "简单",
+    ingredients: [
+      { name: "粉条", amount: "1小捆" },
+      { name: "韭菜", amount: "150g" },
+      { name: "豆芽", amount: "150g" },
+      { name: "鸡蛋", amount: "4个" },
+    ],
+    seasonings: [
+      { name: "葱", amount: "适量" },
+      { name: "姜", amount: "适量" },
+      { name: "蒜", amount: "适量" },
+      { name: "干辣椒段", amount: "适量" },
+      { name: "老抽", amount: "适量" },
+      { name: "生抽", amount: "适量" },
+      { name: "蚝油", amount: "适量" },
+      { name: "白糖", amount: "适量" },
+      { name: "鸡精", amount: "适量" },
+      { name: "盐", amount: "适量" },
+    ],
+    steps: [
+      { step: 1, content: "粉条用开水烫至能掐断，过凉水防粘，加老抽拌匀上色" },
+      {
+        step: 2,
+        content: "韭菜切寸段，豆芽洗净；葱切葱花、姜切丝、蒜切片，备干辣椒",
+      },
+      {
+        step: 3,
+        content: "鸡蛋打散，热锅冒烟多放油，边倒蛋液边搅成絮状，凝固盛出",
+      },
+      { step: 4, content: "大火爆香葱姜蒜干辣椒，下豆芽炒至微软" },
+      {
+        step: 5,
+        content: "下粉条、鸡蛋炒匀，转小火加生抽、蚝油、白糖、鸡精、盐调味",
+      },
+      { step: 6, content: "大火翻匀，放韭菜炒至变色立刻出锅" },
+    ],
+  },
+];
