@@ -1,6 +1,6 @@
 import { reactive, computed } from "vue";
 
-import type { CartLine, Category, MenuItem } from "@/types/menu";
+import type { CartLine, MenuItem } from "@/types/menu";
 import { getLineCount, type CartState } from "@/store/cart-core";
 import { categories, menuItems } from "@/data/menu";
 

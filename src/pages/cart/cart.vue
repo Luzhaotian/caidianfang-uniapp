@@ -10,7 +10,7 @@
       </view>
 
       <view v-else>
-        <view class="line" v-for="line in store.state.cart" :key="line.id">
+        <view v-for="line in store.state.cart" :key="line.id" class="line">
           <image class="thumb" :src="line.image" mode="aspectFill" />
           <view class="info">
             <text class="name">{{ line.name }}</text>

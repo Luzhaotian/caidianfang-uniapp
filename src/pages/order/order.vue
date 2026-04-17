@@ -8,7 +8,7 @@
       <text class="section-title">我们点的美食</text>
       <view class="divider" />
       <view class="order-list">
-        <view class="order-item" v-for="item in cart" :key="item.id">
+        <view v-for="item in cart" :key="item.id" class="order-item">
           <text class="item-name">{{ item.name }}</text>
           <text class="item-count">x{{ item.count }}</text>
         </view>

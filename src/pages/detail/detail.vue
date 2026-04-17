@@ -29,16 +29,16 @@
         <view class="section">
           <text class="section-label">原材料</text>
           <view class="ingredient-list">
-            <view class="ingredient-tag" v-for="ing in item?.ingredients" :key="ing.name">
+            <view v-for="ing in item?.ingredients" :key="ing.name" class="ingredient-tag">
               <text class="ingredient-text">{{ ing.name }} {{ ing.amount }}</text>
             </view>
           </view>
         </view>
 
-        <view class="section" v-if="item?.seasonings && item.seasonings.length > 0">
+        <view v-if="item?.seasonings && item.seasonings.length > 0" class="section">
           <text class="section-label">调料</text>
           <view class="ingredient-list">
-            <view class="ingredient-tag" v-for="s in item?.seasonings" :key="s.name">
+            <view v-for="s in item?.seasonings" :key="s.name" class="ingredient-tag">
               <text class="ingredient-text">{{ s.name }} {{ s.amount }}</text>
             </view>
           </view>
@@ -49,7 +49,7 @@
         <text class="card-title">制作步骤</text>
         <view class="divider" />
         <view class="steps">
-          <view class="step" v-for="s in item?.steps" :key="s.step">
+          <view v-for="s in item?.steps" :key="s.step" class="step">
             <text class="step-text">{{ s.step }}. {{ s.content }}</text>
           </view>
         </view>
@@ -70,7 +70,8 @@ const itemId = ref<number>(0)
 const item = ref<MenuItem | null>(null)
 
 onLoad((options) => {
-  const id = (options as any)?.id
+  const opts = options as { id?: string } | undefined
+  const id = opts?.id
   if (id) {
     itemId.value = Number(id)
     item.value = store.state.menu.find(m => m.id === itemId.value) || null

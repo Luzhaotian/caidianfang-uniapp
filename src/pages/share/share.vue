@@ -17,7 +17,7 @@
       <view class="divider" />
 
       <view class="rows">
-        <view class="row" v-for="line in cart" :key="line.id">
+        <view v-for="line in cart" :key="line.id" class="row">
           <text class="row-name" @click="goDetail(line.id)">{{ line.name }}</text>
           <text class="row-qty">x{{ line.count }}</text>
         </view>
@@ -43,7 +43,8 @@ const cart = ref<CartLine[]>([])
 const rawData = ref("")
 
 onLoad((options) => {
-  const data = (options as any)?.data
+  const opts = options as { data?: string } | undefined
+  const data = opts?.data
   if (!data) return
   try {
     rawData.value = String(data)

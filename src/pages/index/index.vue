@@ -9,7 +9,8 @@
 
     <view class="content">
       <view class="sidebar">
-        <view v-for="(cat, index) in store.state.categories" :key="cat.id" class="sidebar-item"
+        <view
+v-for="(cat, index) in store.state.categories" :key="cat.id" class="sidebar-item"
           :class="{ active: activeCategoryIndex === index }" @click="onCategoryChange(index)">
           <text class="sidebar-item-text">{{ cat.name }}</text>
         </view>
@@ -37,7 +38,7 @@
     </view>
 
     <!-- Cart Drawer -->
-    <view class="drawer-mask" v-if="showDrawer" @click="closeCartDrawer"></view>
+    <view v-if="showDrawer" class="drawer-mask" @click="closeCartDrawer"></view>
     <view class="drawer" :class="{ 'drawer-open': showDrawer }">
       <!-- Drag indicator -->
       <view class="drawer-drag-indicator"></view>
@@ -45,7 +46,7 @@
       <view class="drawer-header">
         <text class="drawer-title">购物车</text>
         <view class="drawer-actions">
-          <text class="drawer-clear-btn" @click="clearCart" v-if="store.state.cart.length > 0">清空</text>
+          <text v-if="store.state.cart.length > 0" class="drawer-clear-btn" @click="clearCart">清空</text>
           <view class="drawer-close" @click="closeCartDrawer">
             <text class="drawer-close-text">✕</text>
           </view>
@@ -60,13 +61,14 @@
         </view>
 
         <view v-else>
-          <view class="drawer-line" v-for="line in store.state.cart" :key="line.id">
+          <view v-for="line in store.state.cart" :key="line.id" class="drawer-line">
             <image class="drawer-thumb" :src="line.image" mode="aspectFill" />
             <view class="drawer-info">
               <text class="drawer-name">{{ line.name }}</text>
             </view>
             <view class="drawer-stepper">
-              <view class="drawer-stepper-btn drawer-stepper-minus"
+              <view
+class="drawer-stepper-btn drawer-stepper-minus"
                 :class="{ 'drawer-stepper-disabled': line.count <= 0 }" @click="onStepperChange(line, line.count - 1)">
                 <text class="drawer-stepper-btn-text">−</text>
               </view>
@@ -81,7 +83,8 @@
 
       <view class="drawer-bottom">
         <text class="drawer-total">已选 {{ store.totalCount }} 件美食</text>
-        <view class="drawer-submit-btn" :class="{ 'drawer-submit-disabled': store.totalCount.value === 0 }"
+        <view
+class="drawer-submit-btn" :class="{ 'drawer-submit-disabled': store.totalCount.value === 0 }"
           @click="goOrder">
           <text class="drawer-submit-btn-text">去结算</text>
         </view>
