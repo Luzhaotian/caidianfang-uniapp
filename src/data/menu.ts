@@ -9,34 +9,6 @@ export const categories: Category[] = [
 
 export const menuItems: MenuItem[] = [
   // {
-  //   id: 2,
-  //   categoryId: 1,
-  //   name: "香脆炸鸡块",
-  //   desc: "外酥里嫩，搭配甜辣酱",
-  //   image:
-  //     "https://images.unsplash.com/photo-1562967914-608f82629710?w=500&q=80",
-  //   cookTime: "约 20 分钟",
-  //   difficulty: "中等",
-  //   ingredients: [
-  //     { name: "鸡腿肉", amount: "300g" },
-  //     { name: "淀粉", amount: "50g" },
-  //     { name: "鸡蛋", amount: "1个" },
-  //     { name: "面包糠", amount: "100g" },
-  //   ],
-  //   seasonings: [
-  //     { name: "盐", amount: "3g" },
-  //     { name: "白胡椒", amount: "2g" },
-  //     { name: "蒜粉", amount: "5g" },
-  //     { name: "甜辣酱", amount: "30g" },
-  //   ],
-  //   steps: [
-  //     { step: 1, content: "鸡腿肉切块，加盐、白胡椒、蒜粉腌制15分钟" },
-  //     { step: 2, content: "依次裹上淀粉→蛋液→面包糠" },
-  //     { step: 3, content: "油温170°C，下锅炸至金黄（约5分钟）" },
-  //     { step: 4, content: "捞出沥油，搭配甜辣酱食用" },
-  //   ],
-  // },
-  // {
   //   id: 4,
   //   categoryId: 2,
   //   name: "经典蔬菜沙拉",
