@@ -9,38 +9,6 @@ export const categories: Category[] = [
 
 export const menuItems: MenuItem[] = [
   // {
-  //   id: 1,
-  //   categoryId: 1,
-  //   name: "招牌牛肉汉堡",
-  //   desc: "多汁牛肉饼 + 特制酱",
-  //   image:
-  //     "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80",
-  //   cookTime: "约 15 分钟",
-  //   difficulty: "简单",
-  //   ingredients: [
-  //     { name: "牛肉饼", amount: "1块" },
-  //     { name: "面包胚", amount: "1个" },
-  //     { name: "生菜", amount: "2片" },
-  //     { name: "番茄", amount: "3片" },
-  //     { name: "芝士", amount: "1片" },
-  //   ],
-  //   seasonings: [
-  //     { name: "黑胡椒", amount: "2g" },
-  //     { name: "盐", amount: "1g" },
-  //     { name: "橄榄油", amount: "10ml" },
-  //     { name: "汉堡酱", amount: "15g" },
-  //   ],
-  //   steps: [
-  //     { step: 1, content: "牛肉饼两面撒盐和黑胡椒，静置5分钟" },
-  //     { step: 2, content: "平底锅加橄榄油，中火煎牛肉饼每面3分钟" },
-  //     { step: 3, content: "面包胚切半，内侧朝下煎至微黄" },
-  //     {
-  //       step: 4,
-  //       content: "组装：底部面包→汉堡酱→生菜→番茄→牛肉饼→芝士→顶面包",
-  //     },
-  //   ],
-  // },
-  // {
   //   id: 2,
   //   categoryId: 1,
   //   name: "香脆炸鸡块",
