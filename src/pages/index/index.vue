@@ -10,30 +10,42 @@
     <view class="content">
       <view class="sidebar">
         <view
-v-for="(cat, index) in store.state.categories" :key="cat.id" class="sidebar-item"
+v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
           :class="{ active: activeCategoryIndex === index }" @click="onCategoryChange(index)">
           <text class="sidebar-item-text">{{ cat.name }}</text>
         </view>
       </view>
 
       <scroll-view class="list" scroll-y>
-        <view v-for="item in filteredMenu" :key="item.id" class="food-card" @click="goDetail(item.id)">
-          <image class="thumb" :src="item.image" mode="aspectFill" />
-          <view class="info">
-            <text class="name">{{ item.name }}</text>
-            <text class="desc">{{ item.desc }}</text>
-          </view>
-          <view class="add-btn" @click.stop="onStepperChange(item, store.getCount(item.id) + 1)">
-            <text class="add-btn-text">+</text>
-          </view>
+        <view v-if="filteredMenu.length === 0" class="list-empty">
+          <text class="list-empty-text">暂无收藏，点击菜品卡片上的小心心添加</text>
         </view>
+        <template v-else>
+          <view v-for="item in filteredMenu" :key="item.id" class="food-card" @click="goDetail(item.id)">
+            <image class="thumb" :src="item.image" mode="aspectFill" />
+            <view class="info">
+              <text class="name">{{ item.name }}</text>
+              <text class="desc">{{ item.desc }}</text>
+            </view>
+            <view class="card-actions" @click.stop>
+              <view class="fav-btn" @click.stop="store.toggleFavorite(item.id)">
+                <text class="fav-icon" :class="{ 'fav-icon--on': store.isFavorite(item.id) }">{{
+                  store.isFavorite(item.id) ? "♥" : "♡"
+                }}</text>
+              </view>
+              <view class="add-btn" @click.stop="onStepperChange(item, store.getCount(item.id) + 1)">
+                <text class="add-btn-text">+</text>
+              </view>
+            </view>
+          </view>
+        </template>
       </scroll-view>
     </view>
 
     <view class="bottom">
       <text class="bottom-text" @click="openCartDrawer">已选 {{ store.totalCount }} 件美食</text>
       <view class="cart-btn" @click="openCartDrawer">
-        <text class="cart-btn-text">购物车</text>
+        <text class="cart-btn-text">分享菜单</text>
       </view>
     </view>
 
@@ -44,7 +56,7 @@ v-for="(cat, index) in store.state.categories" :key="cat.id" class="sidebar-item
       <view class="drawer-drag-indicator"></view>
 
       <view class="drawer-header">
-        <text class="drawer-title">购物车</text>
+        <text class="drawer-title">分享菜单</text>
         <view class="drawer-actions">
           <text v-if="store.state.cart.length > 0" class="drawer-clear-btn" @click="clearCart">清空</text>
           <view class="drawer-close" @click="closeCartDrawer">
@@ -57,7 +69,7 @@ v-for="(cat, index) in store.state.categories" :key="cat.id" class="sidebar-item
 
       <scroll-view class="drawer-content" scroll-y>
         <view v-if="store.state.cart.length === 0" class="drawer-empty">
-          <text class="drawer-empty-text">购物车是空的</text>
+          <text class="drawer-empty-text">分享菜单是空的</text>
         </view>
 
         <view v-else>
@@ -86,7 +98,7 @@ class="drawer-stepper-btn drawer-stepper-minus"
         <view
 class="drawer-submit-btn" :class="{ 'drawer-submit-disabled': store.totalCount.value === 0 }"
           @click="goOrder">
-          <text class="drawer-submit-btn-text">去结算</text>
+          <text class="drawer-submit-btn-text">去分享菜单</text>
         </view>
       </view>
     </view>
@@ -96,7 +108,7 @@ class="drawer-submit-btn" :class="{ 'drawer-submit-disabled': store.totalCount.v
 <script setup lang="ts">
 import { computed, ref } from "vue"
 
-import { useQuickBiteStore } from "@/store/cart"
+import { FAVORITES_CATEGORY_ID, useQuickBiteStore } from "@/store/cart"
 import type { MenuItem } from "@/types/menu"
 
 const store = useQuickBiteStore()
@@ -104,8 +116,23 @@ const store = useQuickBiteStore()
 const activeCategoryIndex = ref(0)
 const showDrawer = ref(false)
 
-const activeCategoryId = computed(() => store.state.categories[activeCategoryIndex.value]?.id ?? 1)
-const filteredMenu = computed(() => store.state.menu.filter((x) => x.categoryId === activeCategoryId.value))
+const sidebarEntries = computed(() => [
+  ...store.state.categories,
+  { id: FAVORITES_CATEGORY_ID, name: "收藏" },
+])
+
+const activeCategoryId = computed(
+  () => sidebarEntries.value[activeCategoryIndex.value]?.id ?? store.state.categories[0]?.id ?? 1,
+)
+
+const filteredMenu = computed(() => {
+  const id = activeCategoryId.value
+  if (id === FAVORITES_CATEGORY_ID) {
+    const fav = new Set(store.state.favoriteIds)
+    return store.state.menu.filter((x) => fav.has(x.id))
+  }
+  return store.state.menu.filter((x) => x.categoryId === id)
+})
 
 function onCategoryChange(index: number) {
   activeCategoryIndex.value = index
@@ -256,6 +283,52 @@ function goDetail(id: number) {
   min-height: 0;
 }
 
+.list-empty {
+  padding: 80rpx 32rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.list-empty-text {
+  font-size: 24rpx;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  flex-shrink: 0;
+  width: 60rpx;
+}
+
+.fav-btn {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fav-btn:active {
+  opacity: 0.7;
+}
+
+.fav-icon {
+  font-size: 30rpx;
+  color: #d1d5db;
+  line-height: 1;
+}
+
+.fav-icon--on {
+  color: #e63946;
+}
+
 .food-card {
   background: #fff;
   border-radius: 24rpx;
@@ -271,6 +344,7 @@ function goDetail(id: number) {
   height: 120rpx;
   border-radius: 20rpx;
   background: #edf0f5;
+  display: block;
   flex-shrink: 0;
 }
 

@@ -34,6 +34,13 @@
         "navigationBarTitleText": "菜品详情",
         "enablePullDownRefresh": false
       }
+    },
+    {
+      "path": "pages/webview/webview",
+      "style": {
+        "navigationBarTitleText": "视频教程",
+        "enablePullDownRefresh": false
+      }
     }
   ],
   "globalStyle": {

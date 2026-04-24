@@ -5,11 +5,16 @@ import { getLineCount, type CartState } from "@/store/cart-core";
 import { categories, menuItems } from "@/data/menu";
 
 const STORAGE_KEY = "quickbite_cart_v1";
+const FAVORITES_KEY = "quickbite_favorites_v1";
+
+/** 侧边栏「收藏」与真实 categoryId 区分 */
+export const FAVORITES_CATEGORY_ID = -1;
 
 const state = reactive({
   categories,
   menu: menuItems,
   cart: [] as CartLine[],
+  favoriteIds: [] as number[],
 });
 
 function loadCart(): void {
@@ -32,6 +37,38 @@ function loadCart(): void {
 
 function persistCart(): void {
   uni.setStorageSync(STORAGE_KEY, JSON.stringify(state.cart));
+}
+
+function loadFavorites(): void {
+  try {
+    const raw = uni.getStorageSync(FAVORITES_KEY);
+    if (!raw) {
+      state.favoriteIds = [];
+      return;
+    }
+    const parsed = JSON.parse(raw as string) as unknown;
+    state.favoriteIds = Array.isArray(parsed)
+      ? parsed.filter((x): x is number => typeof x === "number")
+      : [];
+  } catch {
+    state.favoriteIds = [];
+  }
+}
+
+function persistFavorites(): void {
+  uni.setStorageSync(FAVORITES_KEY, JSON.stringify(state.favoriteIds));
+}
+
+function toggleFavorite(id: number): void {
+  const ids = state.favoriteIds;
+  const i = ids.indexOf(id);
+  if (i >= 0) ids.splice(i, 1);
+  else ids.push(id);
+  persistFavorites();
+}
+
+function isFavorite(id: number): boolean {
+  return state.favoriteIds.includes(id);
 }
 
 function cartCoreState(): CartState {
@@ -68,6 +105,7 @@ export function useQuickBiteStore() {
   if (!didLoad) {
     didLoad = true;
     loadCart();
+    loadFavorites();
   }
 
   // 确保 computed 正确追踪 state.cart 的变化
@@ -90,5 +128,7 @@ export function useQuickBiteStore() {
     setCount,
     getCount,
     clearCart,
+    toggleFavorite,
+    isFavorite,
   };
 }

@@ -24,7 +24,7 @@
       </view>
 
       <view class="footer">
-        <text class="footer-note">发给你啦，照着点就行</text>
+        <text class="footer-note">发给你啦，照着做就行，点击菜单名有详细做法</text>
         <view class="signature">
           <text class="signature-text">来自：我</text>
         </view>

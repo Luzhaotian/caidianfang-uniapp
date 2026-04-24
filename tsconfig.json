@@ -2,7 +2,8 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
+    "baseUrl": ".",
     "sourceMap": true,
     "paths": { "@/*": ["./src/*"] },
     "lib": ["esnext", "dom"],
