@@ -8,8 +8,6 @@ export const meatEarlyMenuItems: MenuItem[] = [
     name: "猪蹄鸡爪煲",
     desc: "酱香浓郁、软烂脱骨",
     image: "/static/images/menu/zhutui-jizhua.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV1LrXvBoEvM/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 2 小时",
     difficulty: "中等",
     ingredients: [
@@ -58,8 +56,6 @@ export const meatEarlyMenuItems: MenuItem[] = [
     name: "红烧牛肉",
     desc: "香辣软烂、酱香浓郁",
     image: "/static/images/menu/hongshao-niurou.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV1ZukYYPEUu/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 2.5 小时",
     difficulty: "中等",
     ingredients: [
@@ -124,8 +120,6 @@ export const meatEarlyMenuItems: MenuItem[] = [
     name: "鸡公煲",
     desc: "香辣入味、肉质滑嫩",
     image: "/static/images/menu/jigongbao.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV1E1421r7hn/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 30 分钟",
     difficulty: "中等",
     ingredients: [

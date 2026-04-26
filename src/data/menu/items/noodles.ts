@@ -7,8 +7,6 @@ export const noodleMenuItems: MenuItem[] = [
     name: "皮蛋擂椒茄子拌面",
     desc: "擂椒飘香、茄糯面爽，保姆级拌面",
     image: "/static/images/menu/pidan-leijiao-banmian.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV1J2cBzbEXc/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 35 分钟",
     difficulty: "中等",
     ingredients: [

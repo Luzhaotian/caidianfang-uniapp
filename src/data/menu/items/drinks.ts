@@ -7,8 +7,6 @@ export const drinkMenuItems: MenuItem[] = [
     name: "草莓风味调酒",
     desc: "甜香好喝、颜值超高",
     image: "/static/images/menu/strawberry-cocktail.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV14b421J7xa/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 2 分钟",
     difficulty: "简单",
     ingredients: [
@@ -28,8 +26,6 @@ export const drinkMenuItems: MenuItem[] = [
     name: "冰川气泡酒",
     desc: "清爽气泡、冰川颜值",
     image: "/static/images/menu/glacier-sparkling.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV14b421J7xa/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 2 分钟",
     difficulty: "简单",
     ingredients: [
@@ -49,8 +45,6 @@ export const drinkMenuItems: MenuItem[] = [
     name: "茉莉椰青",
     desc: "茉莉清香、清甜不腻",
     image: "/static/images/menu/jasmine-coconut.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV14b421J7xa/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 1 分钟",
     difficulty: "简单",
     ingredients: [

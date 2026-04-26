@@ -12,18 +12,6 @@
     <scroll-view class="content" scroll-y>
       <view class="hero-card">
         <image class="food-image" :src="item?.image" mode="aspectFill" />
-        <view
-          v-if="item?.videoUrl"
-          class="video-row"
-          hover-class="video-row--active"
-          @tap="openVideoLink"
-        >
-          <view class="video-row-icon-wrap">
-            <text class="video-row-icon">▶</text>
-          </view>
-          <text class="video-row-label">观看视频教程</text>
-          <text class="video-row-chevron">›</text>
-        </view>
       </view>
 
       <view class="food-info">
@@ -101,68 +89,6 @@ const onToggleFavorite = () => {
   if (item.value) store.toggleFavorite(item.value.id)
 }
 
-/** 小程序 web-view 仅允许已配置「业务域名」的站点；B 站等无法配置，只能站外打开 */
-const copyUrlForExternalBrowser = (url: string, title?: string) => {
-  uni.setClipboardData({
-    data: url,
-    success: () => {
-      uni.showToast({
-        title: title ?? "链接已复制，请在浏览器中粘贴打开",
-        icon: "none",
-        duration: 3200,
-      })
-    },
-  })
-}
-
-const isMpWebViewBlockedHost = (raw: string): boolean => {
-  try {
-    const host = new URL(raw).hostname.toLowerCase()
-    const blockedSuffixes = [
-      "bilibili.com",
-      "b23.tv",
-      "youtube.com",
-      "youtu.be",
-      "douyin.com",
-      "ixigua.com",
-      "weibo.com",
-    ]
-    return blockedSuffixes.some(
-      s => host === s || host.endsWith(`.${s}`),
-    )
-  } catch {
-    return true
-  }
-}
-
-const openVideoLink = () => {
-  const url = item.value?.videoUrl
-  if (!url) return
-
-  // #ifdef H5
-  window.open(url, "_blank")
-  // #endif
-
-  // #ifdef APP-PLUS
-  plus.runtime.openURL(url)
-  // #endif
-
-  // #ifdef MP
-  if (isMpWebViewBlockedHost(url)) {
-    copyUrlForExternalBrowser(
-      url,
-      "该视频站无法在小程序内打开，已复制链接",
-    )
-    return
-  }
-  uni.navigateTo({
-    url: `/pages/webview/webview?url=${encodeURIComponent(url)}`,
-    fail: () => {
-      copyUrlForExternalBrowser(url)
-    },
-  })
-  // #endif
-}
 </script>
 
 <style scoped>
@@ -225,51 +151,6 @@ const openVideoLink = () => {
   height: 320rpx;
   display: block;
   background: #edf0f5;
-}
-
-.video-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 22rpx 24rpx;
-  background: #fff;
-  border-top: 2rpx solid #f0f2f6;
-}
-
-.video-row--active {
-  background: #fafbfc;
-}
-
-.video-row-icon-wrap {
-  width: 56rpx;
-  height: 56rpx;
-  border-radius: 50%;
-  background: #fef6f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20rpx;
-  flex-shrink: 0;
-}
-
-.video-row-icon {
-  font-size: 22rpx;
-  color: #c45c26;
-  margin-left: 4rpx;
-}
-
-.video-row-label {
-  flex: 1;
-  font-size: 26rpx;
-  font-weight: 600;
-  color: #121726;
-}
-
-.video-row-chevron {
-  font-size: 36rpx;
-  color: #c5cad3;
-  line-height: 1;
-  font-weight: 300;
 }
 
 .food-info {

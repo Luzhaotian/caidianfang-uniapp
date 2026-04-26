@@ -39,8 +39,6 @@ export const vegetableMenuItems: MenuItem[] = [
     name: "炒合菜",
     desc: "鲜香入味、快手家常",
     image: "/static/images/menu/chaohacai.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV1xjNge6EK1/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 15 分钟",
     difficulty: "简单",
     ingredients: [

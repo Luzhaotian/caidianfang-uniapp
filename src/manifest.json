@@ -43,8 +43,25 @@
   "quickapp": {},
   "mp-weixin": {
     "appid": "wx0350ad2c2acf278b",
+    "packOptions": {
+      "ignore": [
+        {
+          "type": "folder",
+          "value": "docs"
+        },
+        {
+          "type": "folder",
+          "value": "scripts"
+        },
+        {
+          "type": "folder",
+          "value": "node_modules"
+        }
+      ]
+    },
     "setting": {
       "urlCheck": false,
+      "minified": true,
       "minify": true,
       "minifyWXSS": true,
       "minifyWXML": true,

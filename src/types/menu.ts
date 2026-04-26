@@ -19,7 +19,6 @@ export interface MenuItem {
   name: string
   desc: string
   image: string
-  videoUrl?: string
   cookTime?: string
   difficulty?: string
   ingredients?: Ingredient[]

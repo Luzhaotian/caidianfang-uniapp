@@ -8,8 +8,6 @@ export const meatLateMenuItems: MenuItem[] = [
     name: "茄汁大虾",
     desc: "酸甜可口、虾皮酥脆，新手也能上的年夜菜",
     image: "/static/images/menu/qiezhi-daxia.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV1xYiLBkELr/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 25 分钟",
     difficulty: "中等",
     ingredients: [
@@ -67,8 +65,6 @@ export const meatLateMenuItems: MenuItem[] = [
     name: "农家一碗香（省油版）",
     desc: "焦香入味、不油腻，超下饭",
     image: "/static/images/menu/nongjia-yiwanxiang.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV1oro6YxEmu/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 20 分钟",
     difficulty: "中等",
     ingredients: [
@@ -126,8 +122,6 @@ export const meatLateMenuItems: MenuItem[] = [
     name: "麻婆豆腐",
     desc: "麻辣鲜香、嫩滑挂汁，正宗家常味",
     image: "/static/images/menu/mapo-doufu.jpg",
-    videoUrl:
-      "https://www.bilibili.com/video/BV12q4y1j7xk/?spm_id_from=333.1387.favlist.content.click&vd_source=d40b3d956dbd357c3858a5e27ca3765b",
     cookTime: "约 30 分钟",
     difficulty: "中等",
     ingredients: [
