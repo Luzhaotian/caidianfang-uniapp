@@ -1,11 +1,11 @@
 <template>
   <view class="container">
     <view class="header">
-      <text class="title">分享菜单详情</text>
+      <text class="title">今日菜单预览</text>
     </view>
 
     <view class="order-card">
-      <text class="section-title">我们点的美食</text>
+      <text class="section-title">今日菜单</text>
       <view class="divider" />
       <view class="order-list">
         <view v-for="item in cart" :key="item.id" class="order-item">
@@ -17,10 +17,10 @@
 
     <view class="action-area">
       <view class="primary-btn" @click="goShare">
-        <text class="primary-btn-text">生成分享菜单</text>
+        <text class="primary-btn-text">分享给朋友</text>
       </view>
       <view class="secondary-btn" @click="goBack">
-        <text class="secondary-btn-text">返回继续点餐</text>
+        <text class="secondary-btn-text">返回继续选菜</text>
       </view>
     </view>
   </view>
@@ -61,7 +61,7 @@ const goShare = () => {
 
 onShareAppMessage(() => {
   return {
-    title: "我想吃这些",
+    title: "今晚吃什么",
     path: `/pages/share/share?data=${rawData.value}`,
     imageUrl: cart.value.length > 0 ? cart.value[0].image : "",
   }

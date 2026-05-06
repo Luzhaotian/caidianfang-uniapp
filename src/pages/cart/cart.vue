@@ -1,12 +1,12 @@
 <template>
   <view class="page">
     <view class="header">
-      <text class="title">已点美食</text>
+      <text class="title">今日菜单</text>
     </view>
 
     <scroll-view class="list" scroll-y>
       <view v-if="store.state.cart.length === 0" class="empty">
-        <text class="empty-text">购物车是空的</text>
+        <text class="empty-text">还没有选择菜品</text>
       </view>
 
       <view v-else>
@@ -38,7 +38,7 @@
         :class="{ disabled: store.totalCount.value === 0 }"
         @click="goOrder"
       >
-        <text class="submit-btn-text">生成分享菜单</text>
+        <text class="submit-btn-text">分享给朋友</text>
       </view>
     </view>
   </view>

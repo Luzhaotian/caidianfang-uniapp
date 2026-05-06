@@ -7,10 +7,10 @@
       <view class="cutout right" />
 
       <view class="head">
-        <text class="h1">我想吃这些</text>
-        <text class="sub">菜点坊 · 分享菜单</text>
+        <text class="h1">今日菜单</text>
+        <text class="sub">照着做就行</text>
         <view class="tag">
-          <text class="tag-text">今晚想吃</text>
+          <text class="tag-text">今晚做这些</text>
         </view>
       </view>
 
@@ -55,7 +55,7 @@ onLoad((options) => {
 })
 
 onShareAppMessage(() => ({
-  title: "我想吃这些",
+  title: "今晚吃什么",
   path: `/pages/share/share?data=${rawData.value}`,
   imageUrl: cart.value[0]?.image || "",
 }))

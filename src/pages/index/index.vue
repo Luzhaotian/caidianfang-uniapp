@@ -2,8 +2,8 @@
   <view class="page">
     <view class="header">
       <view class="header-content">
-        <text class="title">菜点坊 菜单</text>
-        <text class="subtitle">简约·快点·可分享</text>
+        <text class="title">我的菜谱</text>
+        <text class="subtitle">轻松做饭·分享灵感</text>
       </view>
     </view>
 
@@ -43,9 +43,9 @@ v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
     </view>
 
     <view class="bottom">
-      <text class="bottom-text" @click="openCartDrawer">已选 {{ store.totalCount }} 件美食</text>
+      <text class="bottom-text" @click="openCartDrawer">已选 {{ store.totalCount }} 道菜</text>
       <view class="cart-btn" @click="openCartDrawer">
-        <text class="cart-btn-text">分享菜单</text>
+        <text class="cart-btn-text">分享今日菜单</text>
       </view>
     </view>
 
@@ -56,7 +56,7 @@ v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
       <view class="drawer-drag-indicator"></view>
 
       <view class="drawer-header">
-        <text class="drawer-title">分享菜单</text>
+        <text class="drawer-title">今日菜单</text>
         <view class="drawer-actions">
           <text v-if="store.state.cart.length > 0" class="drawer-clear-btn" @click="clearCart">清空</text>
           <view class="drawer-close" @click="closeCartDrawer">
@@ -69,7 +69,7 @@ v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
 
       <scroll-view class="drawer-content" scroll-y>
         <view v-if="store.state.cart.length === 0" class="drawer-empty">
-          <text class="drawer-empty-text">分享菜单是空的</text>
+          <text class="drawer-empty-text">今日菜单是空的</text>
         </view>
 
         <view v-else>
@@ -94,11 +94,11 @@ class="drawer-stepper-btn drawer-stepper-minus"
       </scroll-view>
 
       <view class="drawer-bottom">
-        <text class="drawer-total">已选 {{ store.totalCount }} 件美食</text>
+        <text class="drawer-total">已选 {{ store.totalCount }} 道菜</text>
         <view
 class="drawer-submit-btn" :class="{ 'drawer-submit-disabled': store.totalCount.value === 0 }"
           @click="goOrder">
-          <text class="drawer-submit-btn-text">去分享菜单</text>
+          <text class="drawer-submit-btn-text">去分享</text>
         </view>
       </view>
     </view>

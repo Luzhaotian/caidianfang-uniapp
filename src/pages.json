@@ -4,13 +4,13 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "菜点坊 点餐"
+        "navigationBarTitleText": "我的菜谱"
       }
     },
     {
       "path": "pages/cart/cart",
       "style": {
-        "navigationBarTitleText": "购物车",
+        "navigationBarTitleText": "今日菜单",
         "enablePullDownRefresh": false
       }
     },
@@ -31,7 +31,7 @@
     {
       "path": "pages/detail/detail",
       "style": {
-        "navigationBarTitleText": "菜品详情",
+        "navigationBarTitleText": "菜谱详情",
         "enablePullDownRefresh": false
       }
     }
