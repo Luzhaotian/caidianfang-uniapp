@@ -6,54 +6,53 @@
  * 运行时样式请使用 CSS 自定义属性（var(--color-xxx)）以支持暗色模式。
  */
 
-/* ═══ 主色 Amber ═══ */
-$color-primary: #d97706;
-$color-primary-hover: #f59e0b;
-$color-primary-pressed: #b45309;
-$color-primary-bg: #fffbeb;
-$color-primary-text: #92400e;
+/* 使用 @use 导入主题变量，避免循环导入 */
+@use '@/styles/palette.scss' as palette;
+@use '@/styles/themes/light.scss' as light;
+@use '@/styles/themes/dark.scss' as dark;
 
-/* ═══ 辅色 Lime ═══ */
-$color-accent: #65a30d;
-$color-accent-hover: #84cc16;
-$color-accent-pressed: #4d7c0f;
-$color-accent-bg: #ecfccb;
-$color-accent-text: #4d7c0f;
+// 导出亮色模式变量
+$color-primary: light.$color-primary;
+$color-primary-hover: light.$color-primary-hover;
+$color-primary-pressed: light.$color-primary-pressed;
+$color-primary-bg: light.$color-primary-bg;
+$color-primary-text: light.$color-primary-text;
 
-/* ═══ 功能色 ═══ */
-$color-error: #ef4444;
-$color-success: #22c55e;
-$color-info: #3b82f6;
-$color-warning: #f97316;
+$color-accent: light.$color-accent;
+$color-accent-hover: light.$color-accent-hover;
+$color-accent-pressed: light.$color-accent-pressed;
+$color-accent-bg: light.$color-accent-bg;
+$color-accent-text: light.$color-accent-text;
 
-/* ═══ 收藏 ═══ */
-$color-favorite: #ef4444;
-$color-favorite-muted: #d1d5db;
+$color-error: light.$color-error;
+$color-error-bg: light.$color-error-bg;
+$color-success: light.$color-success;
+$color-success-bg: light.$color-success-bg;
+$color-info: light.$color-info;
+$color-info-bg: light.$color-info-bg;
+$color-warning: light.$color-warning;
+$color-warning-bg: light.$color-warning-bg;
 
-/* ═══ 文字 ═══ */
-$color-text: #111827;
-$color-text-secondary: #374151;
-$color-text-tertiary: #6b7280;
-$color-text-disabled: #9ca3af;
-$color-text-inverse: #ffffff;
+$color-favorite: light.$color-favorite;
+$color-favorite-muted: light.$color-favorite-muted;
 
-/* ═══ 背景/边框 ═══ */
-$color-border: #e5e7eb;
-$color-border-light: #f3f4f6;
-$color-fill: #f3f4f6;
-$color-bg: #f9fafb;
-$color-surface: #ffffff;
-$color-mask: rgba(0, 0, 0, 0.5);
+$color-text: light.$color-text;
+$color-text-secondary: light.$color-text-secondary;
+$color-text-tertiary: light.$color-text-tertiary;
+$color-text-disabled: light.$color-text-disabled;
+$color-text-inverse: light.$color-text-inverse;
 
-/* ═══ Header 渐变 ═══ */
-$color-header-from: #fffbeb;
-$color-header-via: #fef3c7;
-$color-header-to: #fde68a;
+$color-border: light.$color-border;
+$color-border-light: light.$color-border-light;
+$color-fill: light.$color-fill;
+$color-bg: light.$color-bg;
+$color-surface: light.$color-surface;
+$color-mask: light.$color-mask;
 
-/* ═══ Header 装饰 ═══ */
-$color-header-decor-primary: rgba(217, 119, 6, 0.15);
-$color-header-decor-accent: rgba(132, 204, 22, 0.18);
-
-/* ═══ Header 文字 ═══ */
-$color-header-title: #92400e;
-$color-header-subtitle: #b45309;
+$color-header-from: light.$color-header-from;
+$color-header-via: light.$color-header-via;
+$color-header-to: light.$color-header-to;
+$color-header-decor-primary: light.$color-header-decor-primary;
+$color-header-decor-accent: light.$color-header-decor-accent;
+$color-header-title: light.$color-header-title;
+$color-header-subtitle: light.$color-header-subtitle;
