@@ -1,7 +1,7 @@
 /* src/styles/themes/light.css */
 /* 菜点坊亮色模式 — 语义 Token 映射 */
 
-:root {
+page {
   /* ═══ 主色 Amber ═══ */
   --color-primary: var(--amber-600);
   --color-primary-hover: var(--amber-500);

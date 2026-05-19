@@ -3,7 +3,7 @@
 /* 通过 page[data-theme="dark"] 或 @media prefers-color-scheme 激活 */
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  page {
     /* ═══ 主色 Amber（暗色模式用浅色阶保证对比度）═══ */
     --color-primary: var(--amber-400);
     --color-primary-hover: var(--amber-300);
