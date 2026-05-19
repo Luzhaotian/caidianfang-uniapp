@@ -1,8 +1,9 @@
 /**
- * 菜点坊主题 SCSS 变量桥接
+ * 菜点坊主题 SCSS 变量
  *
- * 这些 SCSS 变量用于编译时场景（如 pages.json 的 navigationBarBackgroundColor）
- * 运行时样式请使用 CSS 自定义属性（var(--color-xxx)）
+ * uni.scss 是 uni-app 自动导入的全局 SCSS 变量文件，
+ * 组件中 <style lang="scss"> 可直接使用这些变量。
+ * 运行时样式请使用 CSS 自定义属性（var(--color-xxx)）以支持暗色模式。
  */
 
 /* ═══ 主色 Amber ═══ */
@@ -43,44 +44,3 @@ $color-fill: #f3f4f6;
 $color-bg: #f9fafb;
 $color-surface: #ffffff;
 $color-mask: rgba(0, 0, 0, 0.5);
-
-/* ═══ uni-app 兼容变量映射 ═══ */
-$uni-color-primary: $color-primary;
-$uni-color-success: $color-success;
-$uni-color-warning: $color-warning;
-$uni-color-error: $color-error;
-$uni-text-color: $color-text;
-$uni-text-color-inverse: $color-text-inverse;
-$uni-text-color-grey: $color-text-tertiary;
-$uni-text-color-placeholder: $color-text-disabled;
-$uni-text-color-disable: $color-text-disabled;
-$uni-bg-color: $color-surface;
-$uni-bg-color-grey: $color-bg;
-$uni-bg-color-hover: $color-fill;
-$uni-bg-color-mask: $color-mask;
-$uni-border-color: $color-border;
-
-/* ═══ 尺寸变量（保留原有）═══ */
-$uni-font-size-sm: 12px;
-$uni-font-size-base: 14px;
-$uni-font-size-lg: 16px;
-$uni-img-size-sm: 20px;
-$uni-img-size-base: 26px;
-$uni-img-size-lg: 40px;
-$uni-border-radius-sm: 2px;
-$uni-border-radius-base: 3px;
-$uni-border-radius-lg: 6px;
-$uni-border-radius-circle: 50%;
-$uni-spacing-row-sm: 5px;
-$uni-spacing-row-base: 10px;
-$uni-spacing-row-lg: 15px;
-$uni-spacing-col-sm: 4px;
-$uni-spacing-col-base: 8px;
-$uni-spacing-col-lg: 12px;
-$uni-opacity-disabled: 0.3;
-$uni-color-title: #2c405a;
-$uni-font-size-title: 20px;
-$uni-color-subtitle: #555;
-$uni-font-size-subtitle: 18px;
-$uni-color-paragraph: #3f536e;
-$uni-font-size-paragraph: 15px;
