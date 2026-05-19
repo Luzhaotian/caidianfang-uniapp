@@ -61,10 +61,10 @@ function goOrder() {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .page {
   height: 100vh;
-  background: var(--color-bg);
+  background: $color-bg;
   display: flex;
   flex-direction: column;
 }
@@ -72,14 +72,14 @@ function goOrder() {
 .header {
   height: 200rpx;
   padding: 32rpx 28rpx 0;
-  background: var(--color-surface);
+  background: $color-surface;
   box-sizing: border-box;
 }
 
 .title {
   font-size: 36rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .list {
@@ -96,12 +96,12 @@ function goOrder() {
 }
 
 .empty-text {
-  color: var(--color-text-tertiary);
+  color: $color-text-tertiary;
   font-size: 24rpx;
 }
 
 .line {
-  background: var(--color-surface);
+  background: $color-surface;
   border-radius: 24rpx;
   padding: 20rpx 24rpx;
   display: flex;
@@ -114,7 +114,7 @@ function goOrder() {
   width: 140rpx;
   height: 140rpx;
   border-radius: 20rpx;
-  background: var(--color-fill);
+  background: $color-fill;
   flex-shrink: 0;
 }
 
@@ -128,7 +128,7 @@ function goOrder() {
 .name {
   font-size: 26rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .stepper {
@@ -148,7 +148,7 @@ function goOrder() {
 }
 
 .stepper-btn.minus {
-  background: var(--color-fill);
+  background: $color-fill;
 }
 
 .stepper-btn.minus.disabled {
@@ -156,11 +156,11 @@ function goOrder() {
 }
 
 .stepper-btn.plus {
-  background: var(--color-primary);
+  background: $color-primary;
 }
 
 .stepper-btn.plus:active {
-  background: var(--color-primary-pressed);
+  background: $color-primary-pressed;
 }
 
 .stepper-btn-text {
@@ -170,25 +170,25 @@ function goOrder() {
 }
 
 .stepper-btn.minus .stepper-btn-text {
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .stepper-btn.plus .stepper-btn-text {
-  color: var(--color-text-inverse);
+  color: $color-text-inverse;
 }
 
 .stepper-value {
   min-width: 32rpx;
   font-size: 26rpx;
   font-weight: 500;
-  color: var(--color-text);
+  color: $color-text;
   text-align: center;
 }
 
 .bottom {
   padding: 24rpx;
-  background: var(--color-surface);
-  border-top: 2rpx solid var(--color-border);
+  background: $color-surface;
+  border-top: 2rpx solid $color-border;
   box-sizing: border-box;
 }
 
@@ -196,23 +196,23 @@ function goOrder() {
   width: 100%;
   height: 88rpx;
   border-radius: 44rpx;
-  background: var(--color-primary);
+  background: $color-primary;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .submit-btn.disabled {
-  background: var(--color-text-disabled);
+  background: $color-text-disabled;
 }
 
 .submit-btn:active:not(.disabled) {
-  background: var(--color-primary-pressed);
+  background: $color-primary-pressed;
 }
 
 .submit-btn-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: var(--color-text-inverse);
+  color: $color-text-inverse;
 }
 </style>

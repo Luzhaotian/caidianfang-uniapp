@@ -91,10 +91,10 @@ const onToggleFavorite = () => {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .page {
   min-height: 100vh;
-  background: var(--color-bg);
+  background: $color-bg;
   display: flex;
   flex-direction: column;
 }
@@ -102,7 +102,7 @@ const onToggleFavorite = () => {
 .header {
   min-height: 200rpx;
   padding: 32rpx 28rpx 0;
-  background: var(--color-surface);
+  background: $color-surface;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -114,7 +114,7 @@ const onToggleFavorite = () => {
 .title {
   font-size: 36rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
   flex: 1;
   min-width: 0;
 }
@@ -126,12 +126,12 @@ const onToggleFavorite = () => {
 
 .header-fav-icon {
   font-size: 40rpx;
-  color: var(--color-favorite-muted);
+  color: $color-favorite-muted;
   line-height: 1;
 }
 
 .header-fav-icon--on {
-  color: var(--color-favorite);
+  color: $color-favorite;
 }
 
 .content {
@@ -143,14 +143,14 @@ const onToggleFavorite = () => {
 .hero-card {
   border-radius: 24rpx;
   overflow: hidden;
-  background: var(--color-fill);
+  background: $color-fill;
 }
 
 .food-image {
   width: 100%;
   height: 320rpx;
   display: block;
-  background: var(--color-fill);
+  background: $color-fill;
 }
 
 .food-info {
@@ -166,7 +166,7 @@ const onToggleFavorite = () => {
 .food-name {
   font-size: 28rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .food-tags {
@@ -178,24 +178,24 @@ const onToggleFavorite = () => {
 
 .tag {
   padding: 6rpx 12rpx;
-  background: var(--color-primary-bg);
+  background: $color-primary-bg;
   border-radius: 6rpx;
 }
 
 .tag-text {
   font-size: 20rpx;
-  color: var(--color-text-tertiary);
+  color: $color-text-tertiary;
 }
 
 .food-desc {
   font-size: 20rpx;
-  color: var(--color-text-tertiary);
+  color: $color-text-tertiary;
   margin-top: 12rpx;
   display: block;
 }
 
 .card {
-  background: var(--color-surface);
+  background: $color-surface;
   border-radius: 24rpx;
   padding: 28rpx;
   margin-top: 28rpx;
@@ -204,13 +204,13 @@ const onToggleFavorite = () => {
 .card-title {
   font-size: 24rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
   display: block;
 }
 
 .divider {
   height: 2rpx;
-  background: var(--color-border-light);
+  background: $color-border-light;
   margin: 20rpx 0;
 }
 
@@ -224,7 +224,7 @@ const onToggleFavorite = () => {
 
 .section-label {
   font-size: 20rpx;
-  color: var(--color-text-tertiary);
+  color: $color-text-tertiary;
   display: block;
   margin-bottom: 12rpx;
 }
@@ -237,13 +237,13 @@ const onToggleFavorite = () => {
 
 .ingredient-tag {
   padding: 12rpx 16rpx;
-  background: var(--color-bg);
+  background: $color-bg;
   border-radius: 6rpx;
 }
 
 .ingredient-text {
   font-size: 24rpx;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .steps {
@@ -259,7 +259,7 @@ const onToggleFavorite = () => {
 
 .step-text {
   font-size: 24rpx;
-  color: var(--color-text);
+  color: $color-text;
   line-height: 1.6;
 }
 </style>

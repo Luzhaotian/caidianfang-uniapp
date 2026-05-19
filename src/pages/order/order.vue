@@ -68,10 +68,10 @@ onShareAppMessage(() => {
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
   min-height: 100vh;
-  background-color: var(--color-bg);
+  background-color: $color-bg;
   padding: 28rpx;
   box-sizing: border-box;
 }
@@ -85,11 +85,11 @@ onShareAppMessage(() => {
 .title {
   font-size: 36rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .order-card {
-  background-color: var(--color-surface);
+  background-color: $color-surface;
   border-radius: 32rpx;
   padding: 40rpx 28rpx;
 }
@@ -97,14 +97,14 @@ onShareAppMessage(() => {
 .section-title {
   font-size: 24rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
   display: block;
   margin-bottom: 28rpx;
 }
 
 .divider {
   height: 2rpx;
-  background: var(--color-border-light);
+  background: $color-border-light;
   margin-bottom: 28rpx;
 }
 
@@ -118,7 +118,7 @@ onShareAppMessage(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 0;
-  border-bottom: 2rpx solid var(--color-border-light);
+  border-bottom: 2rpx solid $color-border-light;
 }
 
 .order-item:last-child {
@@ -128,13 +128,13 @@ onShareAppMessage(() => {
 .item-name {
   font-size: 24rpx;
   font-weight: 500;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .item-count {
   font-size: 24rpx;
   font-weight: 500;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .action-area {
@@ -148,28 +148,28 @@ onShareAppMessage(() => {
   width: 100%;
   height: 88rpx;
   border-radius: 44rpx;
-  background: var(--color-primary);
+  background: $color-primary;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .primary-btn:active {
-  background: var(--color-primary-pressed);
+  background: $color-primary-pressed;
 }
 
 .primary-btn-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: var(--color-text-inverse);
+  color: $color-text-inverse;
 }
 
 .secondary-btn {
   width: 100%;
   height: 88rpx;
   border-radius: 44rpx;
-  background: var(--color-surface);
-  border: 2rpx solid var(--color-border);
+  background: $color-surface;
+  border: 2rpx solid $color-border;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,12 +177,12 @@ onShareAppMessage(() => {
 }
 
 .secondary-btn:active {
-  background: var(--color-bg);
+  background: $color-bg;
 }
 
 .secondary-btn-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: var(--color-text);
+  color: $color-text;
 }
 </style>
