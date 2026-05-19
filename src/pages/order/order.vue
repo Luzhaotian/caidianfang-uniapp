@@ -71,7 +71,7 @@ onShareAppMessage(() => {
 <style scoped>
 .container {
   min-height: 100vh;
-  background-color: #f7f8fa;
+  background-color: var(--color-bg);
   padding: 28rpx;
   box-sizing: border-box;
 }
@@ -85,11 +85,11 @@ onShareAppMessage(() => {
 .title {
   font-size: 36rpx;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .order-card {
-  background-color: #ffffff;
+  background-color: var(--color-surface);
   border-radius: 32rpx;
   padding: 40rpx 28rpx;
 }
@@ -97,14 +97,14 @@ onShareAppMessage(() => {
 .section-title {
   font-size: 24rpx;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
   display: block;
   margin-bottom: 28rpx;
 }
 
 .divider {
   height: 2rpx;
-  background: #edf0f5;
+  background: var(--color-border-light);
   margin-bottom: 28rpx;
 }
 
@@ -118,7 +118,7 @@ onShareAppMessage(() => {
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 0;
-  border-bottom: 2rpx solid #edf0f5;
+  border-bottom: 2rpx solid var(--color-border-light);
 }
 
 .order-item:last-child {
@@ -128,13 +128,13 @@ onShareAppMessage(() => {
 .item-name {
   font-size: 24rpx;
   font-weight: 500;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .item-count {
   font-size: 24rpx;
   font-weight: 500;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .action-area {
@@ -148,28 +148,28 @@ onShareAppMessage(() => {
   width: 100%;
   height: 88rpx;
   border-radius: 44rpx;
-  background: #f4a261;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .primary-btn:active {
-  background: #e8954f;
+  background: var(--color-primary-pressed);
 }
 
 .primary-btn-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .secondary-btn {
   width: 100%;
   height: 88rpx;
   border-radius: 44rpx;
-  background: #fff;
-  border: 2rpx solid #dee0e5;
+  background: var(--color-surface);
+  border: 2rpx solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,12 +177,12 @@ onShareAppMessage(() => {
 }
 
 .secondary-btn:active {
-  background: #f7f8fa;
+  background: var(--color-bg);
 }
 
 .secondary-btn-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
 }
 </style>

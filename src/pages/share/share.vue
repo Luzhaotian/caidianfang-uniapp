@@ -68,7 +68,7 @@ function goDetail(id: number) {
 <style scoped>
 .page {
   min-height: 100vh;
-  background: #f7f8fa;
+  background: var(--color-bg);
   padding: 28rpx;
   box-sizing: border-box;
   position: relative;
@@ -80,14 +80,14 @@ function goDetail(id: number) {
   top: 0;
   right: 0;
   height: 300rpx;
-  background: #fef6f0;
+  background: var(--color-primary-bg);
 }
 
 .ticket {
   position: relative;
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 16rpx;
-  border: 1rpx solid #e5e8ed;
+  border: 1rpx solid var(--color-border);
   padding: 28rpx;
   margin-top: 100rpx;
 }
@@ -98,8 +98,8 @@ function goDetail(id: number) {
   width: 32rpx;
   height: 32rpx;
   border-radius: 999rpx;
-  background: #f7f8fa;
-  border: 1rpx solid #e5e8ed;
+  background: var(--color-bg);
+  border: 1rpx solid var(--color-border);
 }
 
 .cutout.left {
@@ -113,14 +113,14 @@ function goDetail(id: number) {
 .h1 {
   font-size: 36rpx;
   font-weight: 800;
-  color: #111827;
+  color: var(--color-text);
   display: block;
 }
 
 .sub {
   margin-top: 6rpx;
   font-size: 20rpx;
-  color: #6b7280;
+  color: var(--color-text-tertiary);
   display: block;
 }
 
@@ -129,20 +129,20 @@ function goDetail(id: number) {
   align-self: flex-start;
   padding: 8rpx 14rpx;
   border-radius: 999rpx;
-  background: #fef6f0;
+  background: var(--color-primary-bg);
   display: inline-flex;
 }
 
 .tag-text {
   font-size: 20rpx;
   font-weight: 700;
-  color: #f4a261;
+  color: var(--color-primary);
 }
 
 .divider {
   margin-top: 20rpx;
   height: 1rpx;
-  background: #edf0f5;
+  background: var(--color-border-light);
 }
 
 .rows {
@@ -153,7 +153,7 @@ function goDetail(id: number) {
   display: flex;
   justify-content: space-between;
   padding: 14rpx 0;
-  border-bottom: 1rpx solid #edf0f5;
+  border-bottom: 1rpx solid var(--color-border-light);
 }
 
 .row:last-child {
@@ -163,17 +163,17 @@ function goDetail(id: number) {
 .row-name {
   font-size: 24rpx;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .row-name:active {
-  color: #f4a261;
+  color: var(--color-primary);
 }
 
 .row-qty {
   font-size: 24rpx;
   font-weight: 900;
-  color: #f4a261;
+  color: var(--color-primary);
 }
 
 .footer {
@@ -182,12 +182,12 @@ function goDetail(id: number) {
 
 .footer-note {
   font-size: 20rpx;
-  color: #6b7280;
+  color: var(--color-text-tertiary);
 }
 
 .signature {
   margin-top: 14rpx;
-  background: #fef6f0;
+  background: var(--color-primary-bg);
   border-radius: 12rpx;
   padding: 14rpx;
 }
@@ -195,6 +195,6 @@ function goDetail(id: number) {
 .signature-text {
   font-size: 20rpx;
   font-weight: 700;
-  color: #f4a261;
+  color: var(--color-primary);
 }
 </style>

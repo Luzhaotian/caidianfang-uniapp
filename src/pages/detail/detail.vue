@@ -94,7 +94,7 @@ const onToggleFavorite = () => {
 <style scoped>
 .page {
   min-height: 100vh;
-  background: #f7f7fa;
+  background: var(--color-bg);
   display: flex;
   flex-direction: column;
 }
@@ -102,7 +102,7 @@ const onToggleFavorite = () => {
 .header {
   min-height: 200rpx;
   padding: 32rpx 28rpx 0;
-  background: #fff;
+  background: var(--color-surface);
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -114,7 +114,7 @@ const onToggleFavorite = () => {
 .title {
   font-size: 36rpx;
   font-weight: 700;
-  color: #121726;
+  color: var(--color-text);
   flex: 1;
   min-width: 0;
 }
@@ -126,12 +126,12 @@ const onToggleFavorite = () => {
 
 .header-fav-icon {
   font-size: 40rpx;
-  color: #d1d5db;
+  color: var(--color-favorite-muted);
   line-height: 1;
 }
 
 .header-fav-icon--on {
-  color: #e63946;
+  color: var(--color-favorite);
 }
 
 .content {
@@ -143,14 +143,14 @@ const onToggleFavorite = () => {
 .hero-card {
   border-radius: 24rpx;
   overflow: hidden;
-  background: #edf0f5;
+  background: var(--color-fill);
 }
 
 .food-image {
   width: 100%;
   height: 320rpx;
   display: block;
-  background: #edf0f5;
+  background: var(--color-fill);
 }
 
 .food-info {
@@ -166,7 +166,7 @@ const onToggleFavorite = () => {
 .food-name {
   font-size: 28rpx;
   font-weight: 700;
-  color: #121726;
+  color: var(--color-text);
 }
 
 .food-tags {
@@ -178,24 +178,24 @@ const onToggleFavorite = () => {
 
 .tag {
   padding: 6rpx 12rpx;
-  background: #fef6f0;
+  background: var(--color-primary-bg);
   border-radius: 6rpx;
 }
 
 .tag-text {
   font-size: 20rpx;
-  color: #6b7380;
+  color: var(--color-text-tertiary);
 }
 
 .food-desc {
   font-size: 20rpx;
-  color: #6b7380;
+  color: var(--color-text-tertiary);
   margin-top: 12rpx;
   display: block;
 }
 
 .card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 24rpx;
   padding: 28rpx;
   margin-top: 28rpx;
@@ -204,13 +204,13 @@ const onToggleFavorite = () => {
 .card-title {
   font-size: 24rpx;
   font-weight: 700;
-  color: #121726;
+  color: var(--color-text);
   display: block;
 }
 
 .divider {
   height: 2rpx;
-  background: #edf0f5;
+  background: var(--color-border-light);
   margin: 20rpx 0;
 }
 
@@ -224,7 +224,7 @@ const onToggleFavorite = () => {
 
 .section-label {
   font-size: 20rpx;
-  color: #6b7380;
+  color: var(--color-text-tertiary);
   display: block;
   margin-bottom: 12rpx;
 }
@@ -237,13 +237,13 @@ const onToggleFavorite = () => {
 
 .ingredient-tag {
   padding: 12rpx 16rpx;
-  background: #f7f7fa;
+  background: var(--color-bg);
   border-radius: 6rpx;
 }
 
 .ingredient-text {
   font-size: 24rpx;
-  color: #121726;
+  color: var(--color-text);
 }
 
 .steps {
@@ -259,7 +259,7 @@ const onToggleFavorite = () => {
 
 .step-text {
   font-size: 24rpx;
-  color: #121726;
+  color: var(--color-text);
   line-height: 1.6;
 }
 </style>

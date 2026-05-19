@@ -1,0 +1,122 @@
+/* src/styles/themes/dark.css */
+/* 菜点坊暗色模式 — 语义 Token 映射 */
+/* 通过 page[data-theme="dark"] 或 @media prefers-color-scheme 激活 */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* ═══ 主色 Amber（暗色模式用浅色阶保证对比度）═══ */
+    --color-primary: var(--amber-400);
+    --color-primary-hover: var(--amber-300);
+    --color-primary-pressed: var(--amber-500);
+    --color-primary-bg: #422006;
+    --color-primary-text: var(--amber-200);
+
+    /* ═══ 辅色 Lime ═══ */
+    --color-accent: var(--lime-400);
+    --color-accent-hover: var(--lime-300);
+    --color-accent-pressed: var(--lime-500);
+    --color-accent-bg: #1a2e05;
+    --color-accent-text: var(--lime-300);
+
+    /* ═══ 功能色 ═══ */
+    --color-error: #f87171;
+    --color-error-bg: #450a0a;
+    --color-success: #4ade80;
+    --color-success-bg: #052e16;
+    --color-info: #60a5fa;
+    --color-info-bg: #172554;
+    --color-warning: #fb923c;
+    --color-warning-bg: #431407;
+
+    /* ═══ 收藏/红心 ═══ */
+    --color-favorite: #f87171;
+    --color-favorite-muted: #78716c;
+
+    /* ═══ 文字（stone 暖灰色系）═══ */
+    --color-text: #f5f5f4;
+    --color-text-secondary: #d6d3d1;
+    --color-text-tertiary: #a8a29e;
+    --color-text-disabled: #78716c;
+    --color-text-inverse: #1c1917;
+
+    /* ═══ 背景/边框 ═══ */
+    --color-border: #44403c;
+    --color-border-light: #292524;
+    --color-fill: #292524;
+    --color-bg: #1c1917;
+    --color-surface: #292524;
+    --color-mask: rgba(0, 0, 0, 0.7);
+
+    /* ═══ Header 渐变 ═══ */
+    --color-header-from: #292524;
+    --color-header-via: #1c1917;
+    --color-header-to: #1c1917;
+
+    /* ═══ Header 装饰 ═══ */
+    --color-header-decor-primary: rgba(251, 191, 36, 0.1);
+    --color-header-decor-accent: rgba(163, 230, 53, 0.08);
+
+    /* ═══ Header 文字 ═══ */
+    --color-header-title: #fde68a;
+    --color-header-subtitle: #fbbf24;
+  }
+}
+
+/* 小程序手动切换暗色模式 */
+page[data-theme="dark"] {
+  /* ═══ 主色 Amber ═══ */
+  --color-primary: var(--amber-400);
+  --color-primary-hover: var(--amber-300);
+  --color-primary-pressed: var(--amber-500);
+  --color-primary-bg: #422006;
+  --color-primary-text: var(--amber-200);
+
+  /* ═══ 辅色 Lime ═══ */
+  --color-accent: var(--lime-400);
+  --color-accent-hover: var(--lime-300);
+  --color-accent-pressed: var(--lime-500);
+  --color-accent-bg: #1a2e05;
+  --color-accent-text: var(--lime-300);
+
+  /* ═══ 功能色 ═══ */
+  --color-error: #f87171;
+  --color-error-bg: #450a0a;
+  --color-success: #4ade80;
+  --color-success-bg: #052e16;
+  --color-info: #60a5fa;
+  --color-info-bg: #172554;
+  --color-warning: #fb923c;
+  --color-warning-bg: #431407;
+
+  /* ═══ 收藏/红心 ═══ */
+  --color-favorite: #f87171;
+  --color-favorite-muted: #78716c;
+
+  /* ═══ 文字 ═══ */
+  --color-text: #f5f5f4;
+  --color-text-secondary: #d6d3d1;
+  --color-text-tertiary: #a8a29e;
+  --color-text-disabled: #78716c;
+  --color-text-inverse: #1c1917;
+
+  /* ═══ 背景/边框 ═══ */
+  --color-border: #44403c;
+  --color-border-light: #292524;
+  --color-fill: #292524;
+  --color-bg: #1c1917;
+  --color-surface: #292524;
+  --color-mask: rgba(0, 0, 0, 0.7);
+
+  /* ═══ Header 渐变 ═══ */
+  --color-header-from: #292524;
+  --color-header-via: #1c1917;
+  --color-header-to: #1c1917;
+
+  /* ═══ Header 装饰 ═══ */
+  --color-header-decor-primary: rgba(251, 191, 36, 0.1);
+  --color-header-decor-accent: rgba(163, 230, 53, 0.08);
+
+  /* ═══ Header 文字 ═══ */
+  --color-header-title: #fde68a;
+  --color-header-subtitle: #fbbf24;
+}

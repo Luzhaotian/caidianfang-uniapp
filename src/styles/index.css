@@ -1,0 +1,6 @@
+/* src/styles/index.css */
+/* 菜点坊主题样式入口 */
+
+@import './palette.css';
+@import './themes/light.css';
+@import './themes/dark.css';

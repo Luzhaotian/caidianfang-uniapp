@@ -169,7 +169,7 @@ function goDetail(id: number) {
 <style scoped>
 .page {
   height: 100vh;
-  background: #f7f8fa;
+  background: var(--color-bg);
   display: flex;
   flex-direction: column;
 }
@@ -178,7 +178,7 @@ function goDetail(id: number) {
   height: 200rpx;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, #fef9f3 0%, #fdf3e7 40%, #fce8d5 100%);
+  background: linear-gradient(160deg, var(--color-header-from) 0%, var(--color-header-via) 40%, var(--color-header-to) 100%);
 }
 
 .header::before {
@@ -188,7 +188,7 @@ function goDetail(id: number) {
   right: -15%;
   width: 350rpx;
   height: 350rpx;
-  background: radial-gradient(circle, rgba(244, 162, 97, 0.15) 0%, transparent 65%);
+  background: radial-gradient(circle, var(--color-header-decor-primary) 0%, transparent 65%);
   border-radius: 50%;
 }
 
@@ -199,7 +199,7 @@ function goDetail(id: number) {
   left: -5%;
   width: 280rpx;
   height: 280rpx;
-  background: radial-gradient(circle, rgba(233, 196, 106, 0.18) 0%, transparent 60%);
+  background: radial-gradient(circle, var(--color-header-decor-accent) 0%, transparent 60%);
   border-radius: 50%;
 }
 
@@ -214,7 +214,7 @@ function goDetail(id: number) {
 .title {
   font-size: 36rpx;
   font-weight: 700;
-  color: #8b5a3c;
+  color: var(--color-header-title);
   position: relative;
   z-index: 1;
   display: block;
@@ -222,7 +222,7 @@ function goDetail(id: number) {
 
 .subtitle {
   font-size: 20rpx;
-  color: #b88a6b;
+  color: var(--color-header-subtitle);
   position: relative;
   z-index: 1;
   margin-top: 6rpx;
@@ -237,8 +237,8 @@ function goDetail(id: number) {
 
 .sidebar {
   width: 160rpx;
-  background: #fff;
-  border-right: 2rpx solid #ededf2;
+  background: var(--color-surface);
+  border-right: 2rpx solid var(--color-border-light);
 }
 
 .sidebar-item {
@@ -250,7 +250,7 @@ function goDetail(id: number) {
 }
 
 .sidebar-item.active {
-  background-color: #fef6f0;
+  background-color: var(--color-primary-bg);
 }
 
 .sidebar-item.active::before {
@@ -261,18 +261,18 @@ function goDetail(id: number) {
   transform: translateY(-50%);
   width: 5rpx;
   height: 32rpx;
-  background-color: #f4a261;
+  background-color: var(--color-primary);
   border-radius: 0 3rpx 3rpx 0;
 }
 
 .sidebar-item-text {
   font-size: 24rpx;
-  color: #6b7280;
+  color: var(--color-text-tertiary);
   font-weight: 500;
 }
 
 .sidebar-item.active .sidebar-item-text {
-  color: #111827;
+  color: var(--color-text);
   font-weight: 700;
 }
 
@@ -291,7 +291,7 @@ function goDetail(id: number) {
 
 .list-empty-text {
   font-size: 24rpx;
-  color: #9ca3af;
+  color: var(--color-text-disabled);
   text-align: center;
   line-height: 1.5;
 }
@@ -321,16 +321,16 @@ function goDetail(id: number) {
 
 .fav-icon {
   font-size: 30rpx;
-  color: #d1d5db;
+  color: var(--color-favorite-muted);
   line-height: 1;
 }
 
 .fav-icon--on {
-  color: #e63946;
+  color: var(--color-favorite);
 }
 
 .food-card {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 24rpx;
   padding: 24rpx;
   display: flex;
@@ -343,7 +343,7 @@ function goDetail(id: number) {
   width: 120rpx;
   height: 120rpx;
   border-radius: 20rpx;
-  background: #edf0f5;
+  background: var(--color-fill);
   display: block;
   flex-shrink: 0;
 }
@@ -358,12 +358,12 @@ function goDetail(id: number) {
 .name {
   font-size: 24rpx;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .desc {
   font-size: 20rpx;
-  color: #6b7280;
+  color: var(--color-text-tertiary);
   margin-top: 6rpx;
 }
 
@@ -371,7 +371,7 @@ function goDetail(id: number) {
   width: 60rpx;
   height: 60rpx;
   border-radius: 30rpx;
-  background: #f4a261;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -379,21 +379,21 @@ function goDetail(id: number) {
 }
 
 .add-btn:active {
-  background: #e8954f;
+  background: var(--color-primary-pressed);
 }
 
 .add-btn-text {
   font-size: 32rpx;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-inverse);
   line-height: 1;
 }
 
 .bottom {
   height: 140rpx;
   padding: 0 28rpx;
-  background: #fff;
-  border-top: 2rpx solid #e5e8ed;
+  background: var(--color-surface);
+  border-top: 2rpx solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -401,7 +401,7 @@ function goDetail(id: number) {
 }
 
 .bottom-text {
-  color: #111827;
+  color: var(--color-text);
   font-size: 20rpx;
   font-weight: 500;
 }
@@ -414,20 +414,20 @@ function goDetail(id: number) {
   width: 180rpx;
   height: 72rpx;
   border-radius: 36rpx;
-  background: #f4a261;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .cart-btn:active {
-  background: #e8954f;
+  background: var(--color-primary-pressed);
 }
 
 .cart-btn-text {
   font-size: 24rpx;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 /* Drawer Styles */
@@ -437,7 +437,7 @@ function goDetail(id: number) {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--color-mask);
   z-index: 1000;
 }
 
@@ -448,7 +448,7 @@ function goDetail(id: number) {
   right: 0;
   max-height: calc(100vh - 100rpx);
   /* Leave some space at top */
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 20rpx 20rpx 0 0;
   z-index: 1001;
   transform: translateY(100%);
@@ -464,7 +464,7 @@ function goDetail(id: number) {
 .drawer-drag-indicator {
   width: 40rpx;
   height: 3rpx;
-  background: #e0e0e0;
+  background: var(--color-border);
   border-radius: 2rpx;
   align-self: center;
   margin-top: 6rpx;
@@ -485,20 +485,20 @@ function goDetail(id: number) {
 
 .drawer-clear-btn {
   font-size: 24rpx;
-  color: #6b7380;
+  color: var(--color-text-tertiary);
   padding: 6rpx 12rpx;
   border-radius: 12rpx;
 }
 
 .drawer-clear-btn:active {
-  background: #f3f4f6;
-  color: #121726;
+  background: var(--color-fill);
+  color: var(--color-text);
 }
 
 .drawer-title {
   font-size: 28rpx;
   font-weight: 700;
-  color: #121726;
+  color: var(--color-text);
 }
 
 .drawer-close {
@@ -511,13 +511,13 @@ function goDetail(id: number) {
 
 .drawer-close-text {
   font-size: 40rpx;
-  color: #6b7380;
+  color: var(--color-text-tertiary);
   line-height: 1;
 }
 
 .drawer-divider {
   height: 2rpx;
-  background: #edeff5;
+  background: var(--color-border-light);
   margin: 0 32rpx;
 }
 
@@ -536,13 +536,13 @@ function goDetail(id: number) {
 }
 
 .drawer-empty-text {
-  color: #6b7280;
+  color: var(--color-text-tertiary);
   font-size: 28rpx;
 }
 
 .drawer-line {
-  background: #fff;
-  border: 2rpx solid #edeff5;
+  background: var(--color-surface);
+  border: 2rpx solid var(--color-border-light);
   border-radius: 20rpx;
   padding: 16rpx;
   display: flex;
@@ -555,7 +555,7 @@ function goDetail(id: number) {
   width: 140rpx;
   height: 140rpx;
   border-radius: 14rpx;
-  background: #edeff5;
+  background: var(--color-fill);
   flex-shrink: 0;
 }
 
@@ -569,7 +569,7 @@ function goDetail(id: number) {
 .drawer-name {
   font-size: 26rpx;
   font-weight: 600;
-  color: #121726;
+  color: var(--color-text);
 }
 
 .drawer-stepper {
@@ -589,7 +589,7 @@ function goDetail(id: number) {
 }
 
 .drawer-stepper-minus {
-  background: #edeff5;
+  background: var(--color-fill);
 }
 
 .drawer-stepper-minus.drawer-stepper-disabled {
@@ -597,11 +597,11 @@ function goDetail(id: number) {
 }
 
 .drawer-stepper-plus {
-  background: #f4a261;
+  background: var(--color-primary);
 }
 
 .drawer-stepper-plus:active {
-  background: #e8954f;
+  background: var(--color-primary-pressed);
 }
 
 .drawer-stepper-btn-text {
@@ -611,18 +611,18 @@ function goDetail(id: number) {
 }
 
 .drawer-stepper-minus .drawer-stepper-btn-text {
-  color: #121726;
+  color: var(--color-text);
 }
 
 .drawer-stepper-plus .drawer-stepper-btn-text {
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .drawer-stepper-value {
   min-width: 28rpx;
   font-size: 26rpx;
   font-weight: 600;
-  color: #121726;
+  color: var(--color-text);
   text-align: center;
 }
 
@@ -635,30 +635,30 @@ function goDetail(id: number) {
 
 .drawer-total {
   font-size: 24rpx;
-  color: #6b7380;
+  color: var(--color-text-tertiary);
 }
 
 .drawer-submit-btn {
   width: 200rpx;
   height: 80rpx;
   border-radius: 40rpx;
-  background: #f4a261;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .drawer-submit-disabled {
-  background: #ccc;
+  background: var(--color-text-disabled);
 }
 
 .drawer-submit-btn:active:not(.drawer-submit-disabled) {
-  background: #e8954f;
+  background: var(--color-primary-pressed);
 }
 
 .drawer-submit-btn-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 </style>

@@ -64,7 +64,7 @@ function goOrder() {
 <style scoped>
 .page {
   height: 100vh;
-  background: #f7f8fa;
+  background: var(--color-bg);
   display: flex;
   flex-direction: column;
 }
@@ -72,14 +72,14 @@ function goOrder() {
 .header {
   height: 200rpx;
   padding: 32rpx 28rpx 0;
-  background: #fff;
+  background: var(--color-surface);
   box-sizing: border-box;
 }
 
 .title {
   font-size: 36rpx;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .list {
@@ -96,12 +96,12 @@ function goOrder() {
 }
 
 .empty-text {
-  color: #6b7280;
+  color: var(--color-text-tertiary);
   font-size: 24rpx;
 }
 
 .line {
-  background: #fff;
+  background: var(--color-surface);
   border-radius: 24rpx;
   padding: 20rpx 24rpx;
   display: flex;
@@ -114,7 +114,7 @@ function goOrder() {
   width: 140rpx;
   height: 140rpx;
   border-radius: 20rpx;
-  background: #edf0f5;
+  background: var(--color-fill);
   flex-shrink: 0;
 }
 
@@ -128,7 +128,7 @@ function goOrder() {
 .name {
   font-size: 26rpx;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .stepper {
@@ -148,7 +148,7 @@ function goOrder() {
 }
 
 .stepper-btn.minus {
-  background: #edf0f5;
+  background: var(--color-fill);
 }
 
 .stepper-btn.minus.disabled {
@@ -156,11 +156,11 @@ function goOrder() {
 }
 
 .stepper-btn.plus {
-  background: #f4a261;
+  background: var(--color-primary);
 }
 
 .stepper-btn.plus:active {
-  background: #e8954f;
+  background: var(--color-primary-pressed);
 }
 
 .stepper-btn-text {
@@ -170,25 +170,25 @@ function goOrder() {
 }
 
 .stepper-btn.minus .stepper-btn-text {
-  color: #111827;
+  color: var(--color-text);
 }
 
 .stepper-btn.plus .stepper-btn-text {
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .stepper-value {
   min-width: 32rpx;
   font-size: 26rpx;
   font-weight: 500;
-  color: #111827;
+  color: var(--color-text);
   text-align: center;
 }
 
 .bottom {
   padding: 24rpx;
-  background: #fff;
-  border-top: 2rpx solid #e5e8ed;
+  background: var(--color-surface);
+  border-top: 2rpx solid var(--color-border);
   box-sizing: border-box;
 }
 
@@ -196,23 +196,23 @@ function goOrder() {
   width: 100%;
   height: 88rpx;
   border-radius: 44rpx;
-  background: #f4a261;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .submit-btn.disabled {
-  background: #ccc;
+  background: var(--color-text-disabled);
 }
 
 .submit-btn:active:not(.disabled) {
-  background: #e8954f;
+  background: var(--color-primary-pressed);
 }
 
 .submit-btn-text {
   font-size: 26rpx;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 </style>
