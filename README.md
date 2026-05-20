@@ -22,18 +22,35 @@ src/
 │   ├── order/       # 订单详情
 │   ├── share/       # 分享页面
 │   └── detail/      # 菜品详情
-├── store/           # 状态管理（Pinia）
+├── store/           # 状态管理
+├── styles/          # 主题样式
+│   ├── palette.css  # 原始色板（Amber/Lime 色阶）
+│   ├── index.css    # 样式入口
+│   └── themes/      # 亮色/暗色模式 Token
+├── utils/           # 工具函数（含主题切换）
 ├── data/            # 静态数据
 ├── types/           # TypeScript 类型定义
 ├── static/          # 静态资源
+├── uni.scss         # SCSS 主题变量
 ├── App.vue          # 应用入口
 └── pages.json       # 页面配置
 ```
+
+## 主题色系统
+
+采用 **麦穗暖阳** 主题色方案（Amber 金黄 + Lime 草绿），通过 SCSS 变量管理：
+
+- **主色**：`$color-primary: #d97706`（麦穗金 amber-600）
+- **辅色**：`$color-accent: #65a30d`（草叶绿 lime-600）
+- **完整变量**：参见 `src/uni.scss`
+
+组件中使用 `<style lang="scss" scoped>` 即可直接引用 `$color-xxx` 变量，无需手动 import。
 
 ## 技术栈
 
 - **框架**: uni-app (Vue 3)
 - **语言**: TypeScript
+- **样式**: SCSS
 - **构建**: Vite
 - **测试**: Vitest
 
