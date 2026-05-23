@@ -34,34 +34,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { onLoad, onShareAppMessage } from "@dcloudio/uni-app"
+import { ref } from "vue";
+import { onLoad, onShareAppMessage } from "@dcloudio/uni-app";
 
-import type { CartLine } from "@/types/menu"
+import type { CartLine } from "@/types/menu";
 
-const cart = ref<CartLine[]>([])
-const rawData = ref("")
+const cart = ref<CartLine[]>([]);
+const rawData = ref("");
 
 onLoad((options) => {
-  const opts = options as { data?: string } | undefined
-  const data = opts?.data
-  if (!data) return
+  const opts = options as { data?: string } | undefined;
+  const data = opts?.data;
+  if (!data) return;
   try {
-    rawData.value = String(data)
-    cart.value = JSON.parse(decodeURIComponent(String(data)))
+    rawData.value = String(data);
+    cart.value = JSON.parse(decodeURIComponent(String(data)));
   } catch {
-    cart.value = []
+    cart.value = [];
   }
-})
+});
 
 onShareAppMessage(() => ({
   title: "今晚吃什么",
   path: `/pages/share/share?data=${rawData.value}`,
   imageUrl: cart.value[0]?.image || "",
-}))
+}));
 
 function goDetail(id: number) {
-  uni.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  uni.navigateTo({ url: `/pages/detail/detail?id=${id}` });
 }
 </script>
 

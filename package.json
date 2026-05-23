@@ -36,12 +36,17 @@
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
     "test": "vitest run -c vitest.config.ts",
+    "format": "prettier --write \"src/**/*.{js,ts,vue,json,scss,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts,vue,json,scss,css,md}\"",
     "lint": "eslint src --ext .js,.ts,.vue",
     "lint:fix": "eslint src --ext .js,.ts,.vue --fix",
     "compress-images": "node scripts/compress-images.mjs",
     "prepare": "husky"
   },
   "lint-staged": {
+    "*.{js,ts,vue,json,scss,css,md}": [
+      "prettier --write"
+    ],
     "*.{js,ts,vue}": [
       "eslint --fix"
     ]
@@ -82,6 +87,7 @@
     "eslint-plugin-vue": "^10.8.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
     "sass": "^1.99.0",
     "sharp": "^0.33.5",
     "terser": "^5.46.1",

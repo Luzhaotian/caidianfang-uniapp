@@ -27,45 +27,45 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { onLoad, onShareAppMessage } from "@dcloudio/uni-app"
-import type { CartLine } from "@/types/menu"
+import { ref } from "vue";
+import { onLoad, onShareAppMessage } from "@dcloudio/uni-app";
+import type { CartLine } from "@/types/menu";
 
-const cart = ref<CartLine[]>([])
-const rawData = ref("")
+const cart = ref<CartLine[]>([]);
+const rawData = ref("");
 
 onLoad((options) => {
   if (options && options.data) {
     try {
-      rawData.value = String(options.data)
-      cart.value = JSON.parse(decodeURIComponent(String(options.data)))
+      rawData.value = String(options.data);
+      cart.value = JSON.parse(decodeURIComponent(String(options.data)));
     } catch (e) {
-      console.error("Failed to parse order data", e)
+      console.error("Failed to parse order data", e);
     }
   }
-})
+});
 
 const goBack = () => {
   uni.navigateBack({
     delta: 1,
     fail: () => {
-      uni.reLaunch({ url: "/pages/index/index" })
-    }
-  })
-}
+      uni.reLaunch({ url: "/pages/index/index" });
+    },
+  });
+};
 
 const goShare = () => {
-  if (!rawData.value) return
-  uni.navigateTo({ url: `/pages/share/share?data=${rawData.value}` })
-}
+  if (!rawData.value) return;
+  uni.navigateTo({ url: `/pages/share/share?data=${rawData.value}` });
+};
 
 onShareAppMessage(() => {
   return {
     title: "今晚吃什么",
     path: `/pages/share/share?data=${rawData.value}`,
     imageUrl: cart.value.length > 0 ? cart.value[0].image : "",
-  }
-})
+  };
+});
 </script>
 
 <style lang="scss" scoped>

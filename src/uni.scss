@@ -7,9 +7,9 @@
  */
 
 /* 使用 @use 导入主题变量，避免循环导入 */
-@use '@/styles/palette.scss' as palette;
-@use '@/styles/themes/light.scss' as light;
-@use '@/styles/themes/dark.scss' as dark;
+@use "@/styles/palette.scss" as palette;
+@use "@/styles/themes/light.scss" as light;
+@use "@/styles/themes/dark.scss" as dark;
 
 // 导出亮色模式变量
 $color-primary: light.$color-primary;

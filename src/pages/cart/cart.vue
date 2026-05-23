@@ -16,8 +16,8 @@
             <text class="name">{{ line.name }}</text>
           </view>
           <view class="stepper">
-            <view 
-              class="stepper-btn minus" 
+            <view
+              class="stepper-btn minus"
               :class="{ disabled: line.count <= 0 }"
               @click="onStepperChange(line, line.count - 1)"
             >
@@ -33,11 +33,7 @@
     </scroll-view>
 
     <view class="bottom">
-      <view 
-        class="submit-btn" 
-        :class="{ disabled: store.totalCount.value === 0 }"
-        @click="goOrder"
-      >
+      <view class="submit-btn" :class="{ disabled: store.totalCount.value === 0 }" @click="goOrder">
         <text class="submit-btn-text">分享给朋友</text>
       </view>
     </view>
@@ -45,19 +41,19 @@
 </template>
 
 <script setup lang="ts">
-import { useQuickBiteStore } from "@/store/cart"
-import type { CartLine } from "@/types/menu"
+import { useQuickBiteStore } from "@/store/cart";
+import type { CartLine } from "@/types/menu";
 
-const store = useQuickBiteStore()
+const store = useQuickBiteStore();
 
 function onStepperChange(item: CartLine, count: number) {
-  store.setCount(item, count)
+  store.setCount(item, count);
 }
 
 function goOrder() {
-  if (store.totalCount.value === 0) return
-  const data = encodeURIComponent(JSON.stringify(store.state.cart))
-  uni.navigateTo({ url: `/pages/order/order?data=${data}` })
+  if (store.totalCount.value === 0) return;
+  const data = encodeURIComponent(JSON.stringify(store.state.cart));
+  uni.navigateTo({ url: `/pages/order/order?data=${data}` });
 }
 </script>
 

@@ -2,7 +2,7 @@
 /* 菜点坊暗色模式 — 语义 Token 映射 */
 
 // 使用 @use 导入色板
-@use '../palette.scss' as palette;
+@use "../palette.scss" as palette;
 
 /* ═══ 主色 Amber（暗色模式用浅色阶保证对比度）═══ */
 $color-primary: palette.$amber-400;

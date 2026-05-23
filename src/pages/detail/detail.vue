@@ -3,9 +3,11 @@
     <view class="header">
       <text class="title">菜品制作详情</text>
       <view v-if="item" class="header-fav" @tap.stop="onToggleFavorite">
-        <text class="header-fav-icon" :class="{ 'header-fav-icon--on': store.isFavorite(item.id) }">{{
-          store.isFavorite(item.id) ? "♥" : "♡"
-        }}</text>
+        <text
+          class="header-fav-icon"
+          :class="{ 'header-fav-icon--on': store.isFavorite(item.id) }"
+          >{{ store.isFavorite(item.id) ? "♥" : "♡" }}</text
+        >
       </view>
     </view>
 
@@ -32,7 +34,7 @@
       <view class="card">
         <text class="card-title">备菜准备</text>
         <view class="divider" />
-        
+
         <view class="section">
           <text class="section-label">原材料</text>
           <view class="ingredient-list">
@@ -66,29 +68,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { onLoad } from "@dcloudio/uni-app"
-import { useQuickBiteStore } from "@/store/cart"
-import type { MenuItem } from "@/types/menu"
+import { ref } from "vue";
+import { onLoad } from "@dcloudio/uni-app";
+import { useQuickBiteStore } from "@/store/cart";
+import type { MenuItem } from "@/types/menu";
 
-const store = useQuickBiteStore()
+const store = useQuickBiteStore();
 
-const itemId = ref<number>(0)
-const item = ref<MenuItem | null>(null)
+const itemId = ref<number>(0);
+const item = ref<MenuItem | null>(null);
 
 onLoad((options) => {
-  const opts = options as { id?: string } | undefined
-  const id = opts?.id
+  const opts = options as { id?: string } | undefined;
+  const id = opts?.id;
   if (id) {
-    itemId.value = Number(id)
-    item.value = store.state.menu.find(m => m.id === itemId.value) || null
+    itemId.value = Number(id);
+    item.value = store.state.menu.find((m) => m.id === itemId.value) || null;
   }
-})
+});
 
 const onToggleFavorite = () => {
-  if (item.value) store.toggleFavorite(item.value.id)
-}
-
+  if (item.value) store.toggleFavorite(item.value.id);
+};
 </script>
 
 <style lang="scss" scoped>

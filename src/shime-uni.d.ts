@@ -1,9 +1,9 @@
 /// <reference types="@dcloudio/types" />
 
-export {}
+export {};
 
 declare module "vue" {
   interface ComponentCustomProperties {
-    $options?: Record<string, unknown>
+    $options?: Record<string, unknown>;
   }
 }

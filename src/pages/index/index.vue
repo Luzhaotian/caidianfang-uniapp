@@ -10,8 +10,12 @@
     <view class="content">
       <view class="sidebar">
         <view
-v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
-          :class="{ active: activeCategoryIndex === index }" @click="onCategoryChange(index)">
+          v-for="(cat, index) in sidebarEntries"
+          :key="cat.id"
+          class="sidebar-item"
+          :class="{ active: activeCategoryIndex === index }"
+          @click="onCategoryChange(index)"
+        >
           <text class="sidebar-item-text">{{ cat.name }}</text>
         </view>
       </view>
@@ -21,7 +25,12 @@ v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
           <text class="list-empty-text">暂无收藏，点击菜品卡片上的小心心添加</text>
         </view>
         <template v-else>
-          <view v-for="item in filteredMenu" :key="item.id" class="food-card" @click="goDetail(item.id)">
+          <view
+            v-for="item in filteredMenu"
+            :key="item.id"
+            class="food-card"
+            @click="goDetail(item.id)"
+          >
             <image class="thumb" :src="item.image" mode="aspectFill" />
             <view class="info">
               <text class="name">{{ item.name }}</text>
@@ -33,7 +42,10 @@ v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
                   store.isFavorite(item.id) ? "♥" : "♡"
                 }}</text>
               </view>
-              <view class="add-btn" @click.stop="onStepperChange(item, store.getCount(item.id) + 1)">
+              <view
+                class="add-btn"
+                @click.stop="onStepperChange(item, store.getCount(item.id) + 1)"
+              >
                 <text class="add-btn-text">+</text>
               </view>
             </view>
@@ -58,7 +70,9 @@ v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
       <view class="drawer-header">
         <text class="drawer-title">今日菜单</text>
         <view class="drawer-actions">
-          <text v-if="store.state.cart.length > 0" class="drawer-clear-btn" @click="clearCart">清空</text>
+          <text v-if="store.state.cart.length > 0" class="drawer-clear-btn" @click="clearCart"
+            >清空</text
+          >
           <view class="drawer-close" @click="closeCartDrawer">
             <text class="drawer-close-text">✕</text>
           </view>
@@ -80,12 +94,17 @@ v-for="(cat, index) in sidebarEntries" :key="cat.id" class="sidebar-item"
             </view>
             <view class="drawer-stepper">
               <view
-class="drawer-stepper-btn drawer-stepper-minus"
-                :class="{ 'drawer-stepper-disabled': line.count <= 0 }" @click="onStepperChange(line, line.count - 1)">
+                class="drawer-stepper-btn drawer-stepper-minus"
+                :class="{ 'drawer-stepper-disabled': line.count <= 0 }"
+                @click="onStepperChange(line, line.count - 1)"
+              >
                 <text class="drawer-stepper-btn-text">−</text>
               </view>
               <text class="drawer-stepper-value">{{ line.count }}</text>
-              <view class="drawer-stepper-btn drawer-stepper-plus" @click="onStepperChange(line, line.count + 1)">
+              <view
+                class="drawer-stepper-btn drawer-stepper-plus"
+                @click="onStepperChange(line, line.count + 1)"
+              >
                 <text class="drawer-stepper-btn-text">+</text>
               </view>
             </view>
@@ -96,8 +115,10 @@ class="drawer-stepper-btn drawer-stepper-minus"
       <view class="drawer-bottom">
         <text class="drawer-total">已选 {{ store.totalCount }} 道菜</text>
         <view
-class="drawer-submit-btn" :class="{ 'drawer-submit-disabled': store.totalCount.value === 0 }"
-          @click="goOrder">
+          class="drawer-submit-btn"
+          :class="{ 'drawer-submit-disabled': store.totalCount.value === 0 }"
+          @click="goOrder"
+        >
           <text class="drawer-submit-btn-text">去分享</text>
         </view>
       </view>
@@ -106,63 +127,63 @@ class="drawer-submit-btn" :class="{ 'drawer-submit-disabled': store.totalCount.v
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { computed, ref } from "vue";
 
-import { FAVORITES_CATEGORY_ID, useQuickBiteStore } from "@/store/cart"
-import type { MenuItem } from "@/types/menu"
+import { FAVORITES_CATEGORY_ID, useQuickBiteStore } from "@/store/cart";
+import type { MenuItem } from "@/types/menu";
 
-const store = useQuickBiteStore()
+const store = useQuickBiteStore();
 
-const activeCategoryIndex = ref(0)
-const showDrawer = ref(false)
+const activeCategoryIndex = ref(0);
+const showDrawer = ref(false);
 
 const sidebarEntries = computed(() => [
   ...store.state.categories,
   { id: FAVORITES_CATEGORY_ID, name: "收藏" },
-])
+]);
 
 const activeCategoryId = computed(
   () => sidebarEntries.value[activeCategoryIndex.value]?.id ?? store.state.categories[0]?.id ?? 1,
-)
+);
 
 const filteredMenu = computed(() => {
-  const id = activeCategoryId.value
+  const id = activeCategoryId.value;
   if (id === FAVORITES_CATEGORY_ID) {
-    const fav = new Set(store.state.favoriteIds)
-    return store.state.menu.filter((x) => fav.has(x.id))
+    const fav = new Set(store.state.favoriteIds);
+    return store.state.menu.filter((x) => fav.has(x.id));
   }
-  return store.state.menu.filter((x) => x.categoryId === id)
-})
+  return store.state.menu.filter((x) => x.categoryId === id);
+});
 
 function onCategoryChange(index: number) {
-  activeCategoryIndex.value = index
+  activeCategoryIndex.value = index;
 }
 
 function onStepperChange(item: MenuItem, count: number) {
-  store.setCount(item, count)
+  store.setCount(item, count);
 }
 
 function openCartDrawer() {
-  showDrawer.value = true
+  showDrawer.value = true;
 }
 
 function closeCartDrawer() {
-  showDrawer.value = false
+  showDrawer.value = false;
 }
 
 function clearCart() {
-  store.clearCart()
+  store.clearCart();
 }
 
 function goOrder() {
-  if (store.totalCount.value === 0) return
-  closeCartDrawer()
-  const data = encodeURIComponent(JSON.stringify(store.state.cart))
-  uni.navigateTo({ url: `/pages/order/order?data=${data}` })
+  if (store.totalCount.value === 0) return;
+  closeCartDrawer();
+  const data = encodeURIComponent(JSON.stringify(store.state.cart));
+  uni.navigateTo({ url: `/pages/order/order?data=${data}` });
 }
 
 function goDetail(id: number) {
-  uni.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  uni.navigateTo({ url: `/pages/detail/detail?id=${id}` });
 }
 </script>
 
@@ -178,11 +199,16 @@ function goDetail(id: number) {
   height: 200rpx;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(160deg, $color-header-from 0%, $color-header-via 40%, $color-header-to 100%);
+  background: linear-gradient(
+    160deg,
+    $color-header-from 0%,
+    $color-header-via 40%,
+    $color-header-to 100%
+  );
 }
 
 .header::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -40%;
   right: -15%;
@@ -193,7 +219,7 @@ function goDetail(id: number) {
 }
 
 .header::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -25%;
   left: -5%;
@@ -254,7 +280,7 @@ function goDetail(id: number) {
 }
 
 .sidebar-item.active::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
