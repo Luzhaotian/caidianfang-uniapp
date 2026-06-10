@@ -1,0 +1,14 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "name": "菜点坊首页",
+      "description": "菜谱浏览与点餐首页，展示菜品分类、搜索、收藏，支持 AI 识菜添加自定义菜品"
+    },
+    {
+      "path": "pages/camera/camera",
+      "name": "AI 拍照识菜",
+      "description": "拍照识别菜品，自动保存到菜单"
+    }
+  ]
+}

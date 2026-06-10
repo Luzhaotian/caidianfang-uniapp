@@ -1,0 +1,35 @@
+<view class="cd-card">
+  <view class="cd-header">
+    <view class="cd-title">我的自定义菜品</view>
+    <view wx:if="{{total > 0}}" class="cd-count">{{total}} 道</view>
+  </view>
+
+  <block wx:if="{{dishes.length > 0}}">
+    <view class="cd-list">
+      <view
+        wx:for="{{dishes}}"
+        wx:key="dishId"
+        class="cd-item"
+        hover-class="cd-item-hover"
+        bind:tap="onTapDish"
+        data-dish="{{item}}"
+      >
+        <view class="cd-item-main">
+          <view class="cd-item-name">{{item.name}}</view>
+          <view wx:if="{{item.desc}}" class="cd-item-desc">{{item.desc}}</view>
+        </view>
+        <view class="cd-item-meta">
+          <view class="cd-item-cat">{{item.categoryName}}</view>
+          <view wx:if="{{item.cookTime}}" class="cd-item-time">⏱ {{item.cookTime}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="cd-empty">
+      <view class="cd-empty-title">还没有自定义菜品</view>
+      <view class="cd-empty-desc">输入菜品描述或链接，AI 帮你添加</view>
+    </view>
+  </block>
+</view>

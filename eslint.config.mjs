@@ -26,6 +26,6 @@ export default [
     },
   },
   {
-    ignores: ["dist/**", "node_modules/**", "unpackage/**"],
+    ignores: ["dist/**", "node_modules/**", "unpackage/**", "skills/**"],
   },
 ];

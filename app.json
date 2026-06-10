@@ -1,0 +1,19 @@
+{
+  "subPackages": [
+    {
+      "root": "skills",
+      "pages": [],
+      "independent": true
+    }
+  ],
+  "agent": {
+    "skills": [
+      {
+        "name": "dish",
+        "description": "菜点坊 AI 识菜：分析用户输入的文字或链接，识别菜品信息并保存到菜单",
+        "path": "skills/dish-skill"
+      }
+    ],
+    "pageMetadata": "page-meta.json"
+  }
+}

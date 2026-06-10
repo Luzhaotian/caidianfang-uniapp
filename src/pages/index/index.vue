@@ -4,6 +4,10 @@
       <view class="header-content">
         <text class="title">我的菜谱</text>
         <text class="subtitle">轻松做饭·分享灵感</text>
+        <view class="ai-entry" @click="openAiEntry">
+          <text class="ai-entry-icon">🤖</text>
+          <text class="ai-entry-text">AI 识菜 · 输入文字或链接自动添加菜品</text>
+        </view>
       </view>
     </view>
 
@@ -25,29 +29,39 @@
           <text class="list-empty-text">暂无收藏，点击菜品卡片上的小心心添加</text>
         </view>
         <template v-else>
-          <view
-            v-for="item in filteredMenu"
-            :key="item.id"
-            class="food-card"
-            @click="goDetail(item.id)"
-          >
-            <image class="thumb" :src="item.image" mode="aspectFill" />
-            <view class="info">
-              <text class="name">{{ item.name }}</text>
-              <text class="desc">{{ item.desc }}</text>
+          <view v-for="item in filteredMenu" :key="item.id" class="food-card-wrapper">
+            <view
+              class="food-card"
+              :class="{ 'food-card--swiped': swipedItemId === item.id }"
+              :style="{ transform: `translateX(${getSwipeOffset(item.id)}px)` }"
+              @click="onCardTap(item)"
+              @touchstart="onTouchStart($event, item)"
+              @touchmove="onTouchMove($event, item)"
+              @touchend="onTouchEnd($event, item)"
+              @longpress="onLongPress(item)"
+            >
+              <image class="thumb" :src="item.image" mode="aspectFill" />
+              <view class="info">
+                <text class="name">{{ item.name }}</text>
+                <text class="desc">{{ item.desc }}</text>
+              </view>
+              <view class="card-actions" @click.stop>
+                <view class="fav-btn" @click.stop="store.toggleFavorite(item.id)">
+                  <text class="fav-icon" :class="{ 'fav-icon--on': store.isFavorite(item.id) }">{{
+                    store.isFavorite(item.id) ? "♥" : "♡"
+                  }}</text>
+                </view>
+                <view
+                  class="add-btn"
+                  @click.stop="onStepperChange(item, store.getCount(item.id) + 1)"
+                >
+                  <text class="add-btn-text">+</text>
+                </view>
+              </view>
             </view>
-            <view class="card-actions" @click.stop>
-              <view class="fav-btn" @click.stop="store.toggleFavorite(item.id)">
-                <text class="fav-icon" :class="{ 'fav-icon--on': store.isFavorite(item.id) }">{{
-                  store.isFavorite(item.id) ? "♥" : "♡"
-                }}</text>
-              </view>
-              <view
-                class="add-btn"
-                @click.stop="onStepperChange(item, store.getCount(item.id) + 1)"
-              >
-                <text class="add-btn-text">+</text>
-              </view>
+            <!-- 滑动删除按钮（仅自定义菜品显示） -->
+            <view v-if="isCustomDish(item)" class="swipe-delete" @click.stop="confirmDelete(item)">
+              <text class="swipe-delete-text">删除</text>
             </view>
           </view>
         </template>
@@ -128,6 +142,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { onShow } from "@dcloudio/uni-app";
 
 import { FAVORITES_CATEGORY_ID, useQuickBiteStore } from "@/store/cart";
 import type { MenuItem } from "@/types/menu";
@@ -136,6 +151,14 @@ const store = useQuickBiteStore();
 
 const activeCategoryIndex = ref(0);
 const showDrawer = ref(false);
+
+// === 滑动手势状态 ===
+const swipedItemId = ref<number | null>(null);
+const touchStartX = ref(0);
+const touchStartY = ref(0);
+const touchDeltaX = ref(0);
+const isSwiping = ref(false);
+const SWIPE_THRESHOLD = 80; // 滑动多少像素触发删除按钮
 
 const sidebarEntries = computed(() => [
   ...store.state.categories,
@@ -157,6 +180,110 @@ const filteredMenu = computed(() => {
 
 function onCategoryChange(index: number) {
   activeCategoryIndex.value = index;
+}
+
+// === 判断是否为自定义菜品 ===
+function isCustomDish(item: MenuItem): boolean {
+  return item.source === "camera" || item.source === "text";
+}
+
+// === 滑动手势处理 ===
+function onTouchStart(e: TouchEvent, _item: MenuItem) {
+  touchStartX.value = e.touches[0].clientX;
+  touchStartY.value = e.touches[0].clientY;
+  touchDeltaX.value = 0;
+  isSwiping.value = false;
+}
+
+function onTouchMove(e: TouchEvent, item: MenuItem) {
+  const deltaX = e.touches[0].clientX - touchStartX.value;
+  const deltaY = e.touches[0].clientY - touchStartY.value;
+
+  // 如果垂直滑动距离更大，则不是左右滑动
+  if (Math.abs(deltaY) > Math.abs(deltaX) && !isSwiping.value) return;
+
+  isSwiping.value = true;
+
+  // 只允许自定义菜品左滑
+  if (isCustomDish(item)) {
+    if (swipedItemId.value === item.id) {
+      // 已经打开的卡片，向右滑动关闭
+      touchDeltaX.value = Math.min(0, Math.max(-SWIPE_THRESHOLD, deltaX));
+    } else {
+      // 未打开的卡片，只允许左滑
+      touchDeltaX.value = Math.min(0, deltaX);
+    }
+  }
+}
+
+function onTouchEnd(e: TouchEvent, item: MenuItem) {
+  if (!isSwiping.value) {
+    // 没有滑动，执行点击
+    goDetail(item.id);
+    return;
+  }
+
+  if (isCustomDish(item)) {
+    if (swipedItemId.value === item.id) {
+      // 当前已打开，根据滑动距离决定关闭还是保持
+      if (touchDeltaX.value > -SWIPE_THRESHOLD / 2) {
+        swipedItemId.value = null; // 关闭
+      }
+    } else {
+      // 当前未打开，根据滑动距离决定是否打开
+      if (touchDeltaX.value < -SWIPE_THRESHOLD / 2) {
+        swipedItemId.value = item.id; // 打开
+      }
+    }
+  }
+
+  touchDeltaX.value = 0;
+  isSwiping.value = false;
+}
+
+function getSwipeOffset(itemId: number): number {
+  if (swipedItemId.value === itemId) {
+    return -SWIPE_THRESHOLD; // 已打开，偏移
+  }
+  return 0; // 未打开
+}
+
+function onCardTap(item: MenuItem) {
+  // 如果有卡片处于滑动打开状态，先关闭
+  if (swipedItemId.value !== null) {
+    swipedItemId.value = null;
+    return;
+  }
+  goDetail(item.id);
+}
+
+// === 长按删除 ===
+function onLongPress(item: MenuItem) {
+  if (!isCustomDish(item)) return;
+
+  uni.showActionSheet({
+    itemList: ["删除这道菜"],
+    success(res) {
+      if (res.tapIndex === 0) {
+        confirmDelete(item);
+      }
+    },
+  });
+}
+
+function confirmDelete(item: MenuItem) {
+  uni.showModal({
+    title: "确认删除",
+    content: `确定要删除「${item.name}」吗？`,
+    confirmColor: "#ef4444",
+    success(res) {
+      if (res.confirm) {
+        store.deleteCustomDish(item.id);
+        swipedItemId.value = null;
+        uni.showToast({ title: "已删除", icon: "success" });
+      }
+    },
+  });
 }
 
 function onStepperChange(item: MenuItem, count: number) {
@@ -183,8 +310,28 @@ function goOrder() {
 }
 
 function goDetail(id: number) {
+  // 点击详情时关闭滑动状态
+  if (swipedItemId.value !== null) {
+    swipedItemId.value = null;
+    return;
+  }
   uni.navigateTo({ url: `/pages/detail/detail?id=${id}` });
 }
+
+function openAiEntry() {
+  uni.showModal({
+    title: "🤖 AI 识菜使用说明",
+    content:
+      "1. 点击小程序右上角「...」\n2. 选择「AI 对话」\n3. 输入菜品描述或链接\n\n例如：\n• 帮我加一道番茄炒蛋\n• https://xxx.com/红烧肉做法\n• 看看我加的菜",
+    showCancel: false,
+    confirmText: "我知道了",
+  });
+}
+
+// 页面显示时刷新自定义菜品（从 SKILL 写入的 storage 中读取）
+onShow(() => {
+  store.refreshCustomDishes();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -253,6 +400,33 @@ function goDetail(id: number) {
   z-index: 1;
   margin-top: 6rpx;
   display: block;
+}
+
+.ai-entry {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-top: 12rpx;
+  padding: 8rpx 16rpx;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 20rpx;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+
+.ai-entry:active {
+  opacity: 0.7;
+}
+
+.ai-entry-icon {
+  font-size: 24rpx;
+}
+
+.ai-entry-text {
+  font-size: 18rpx;
+  color: $color-primary-text;
+  font-weight: 500;
 }
 
 .content {
@@ -355,6 +529,13 @@ function goDetail(id: number) {
   color: $color-favorite;
 }
 
+.food-card-wrapper {
+  position: relative;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+  border-radius: 24rpx;
+}
+
 .food-card {
   background: $color-surface;
   border-radius: 24rpx;
@@ -362,7 +543,37 @@ function goDetail(id: number) {
   display: flex;
   align-items: center;
   gap: 20rpx;
-  margin-bottom: 24rpx;
+  transition: transform 0.25s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.food-card--swiped {
+  z-index: 2;
+}
+
+.swipe-delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 160rpx;
+  background: #ef4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 24rpx 24rpx 0;
+  z-index: 0;
+}
+
+.swipe-delete:active {
+  background: #dc2626;
+}
+
+.swipe-delete-text {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #fff;
 }
 
 .thumb {

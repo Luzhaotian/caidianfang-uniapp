@@ -1,10 +1,16 @@
 {
   "pages": [
-    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
     {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "我的菜谱"
+      }
+    },
+    {
+      "path": "pages/camera/camera",
+      "style": {
+        "navigationBarTitleText": "AI 拍照识菜",
+        "navigationStyle": "custom"
       }
     },
     {
@@ -41,5 +47,25 @@
     "navigationBarTitleText": "菜点坊",
     "navigationBarBackgroundColor": "#fef3c7",
     "backgroundColor": "#f9fafb"
+  },
+  "tabBar": {
+    "color": "#9ca3af",
+    "selectedColor": "#d97706",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "菜谱",
+        "iconPath": "static/images/tab-menu.png",
+        "selectedIconPath": "static/images/tab-menu-active.png"
+      },
+      {
+        "pagePath": "pages/camera/camera",
+        "text": "AI识菜",
+        "iconPath": "static/images/tab-camera.png",
+        "selectedIconPath": "static/images/tab-camera-active.png"
+      }
+    ]
   }
 }

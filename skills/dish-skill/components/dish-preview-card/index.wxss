@@ -1,0 +1,152 @@
+.dp-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx;
+  margin: 16rpx 0;
+  border: 1rpx solid #f0f0f0;
+}
+
+.dp-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+}
+
+.dp-badge {
+  background: #fef3c7;
+  color: #d97706;
+  font-size: 20rpx;
+  font-weight: 700;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.dp-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dp-image-wrap {
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.dp-image {
+  width: 100%;
+  height: 280rpx;
+  display: block;
+}
+
+.dp-info {
+  margin-bottom: 20rpx;
+}
+
+.dp-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 8rpx;
+}
+
+.dp-desc {
+  font-size: 24rpx;
+  color: #6b7280;
+  margin-bottom: 12rpx;
+}
+
+.dp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.dp-tag {
+  font-size: 20rpx;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.dp-tag-cat {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.dp-section {
+  margin-bottom: 20rpx;
+}
+
+.dp-section-title {
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 12rpx;
+}
+
+.dp-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+}
+
+.dp-ing-tag {
+  font-size: 22rpx;
+  color: #374151;
+  background: #f9fafb;
+  padding: 6rpx 12rpx;
+  border-radius: 6rpx;
+}
+
+.dp-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.dp-step {
+  display: flex;
+  gap: 8rpx;
+}
+
+.dp-step-num {
+  font-size: 22rpx;
+  color: #d97706;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.dp-step-text {
+  font-size: 22rpx;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.dp-actions {
+  margin-top: 20rpx;
+}
+
+.dp-btn {
+  height: 72rpx;
+  border-radius: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dp-btn-primary {
+  background: #d97706;
+}
+
+.dp-btn-hover {
+  opacity: 0.8;
+}
+
+.dp-btn-text {
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #fff;
+}

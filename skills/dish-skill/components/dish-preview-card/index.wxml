@@ -1,0 +1,46 @@
+<view class="dp-card">
+  <view class="dp-header">
+    <view class="dp-badge">AI 识别</view>
+    <view class="dp-title">菜品已添加</view>
+  </view>
+
+  <view wx:if="{{image}}" class="dp-image-wrap">
+    <image class="dp-image" src="{{image}}" mode="aspectFill"></image>
+  </view>
+
+  <view class="dp-info">
+    <view class="dp-name">{{name}}</view>
+    <view wx:if="{{desc}}" class="dp-desc">{{desc}}</view>
+
+    <view class="dp-tags">
+      <view class="dp-tag dp-tag-cat">{{categoryName}}</view>
+      <view wx:if="{{cookTime}}" class="dp-tag">⏱ {{cookTime}}</view>
+      <view class="dp-tag">{{difficulty}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{ingredients.length > 0}}" class="dp-section">
+    <view class="dp-section-title">原材料</view>
+    <view class="dp-tag-list">
+      <view wx:for="{{ingredients}}" wx:key="name" class="dp-ing-tag">
+        {{item.name}} {{item.amount}}
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{steps.length > 0}}" class="dp-section">
+    <view class="dp-section-title">制作步骤</view>
+    <view class="dp-steps">
+      <view wx:for="{{steps}}" wx:key="step" class="dp-step">
+        <text class="dp-step-num">{{item.step}}.</text>
+        <text class="dp-step-text">{{item.content}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="dp-actions">
+    <view class="dp-btn dp-btn-primary" hover-class="dp-btn-hover" bind:tap="onTapViewMenu">
+      <view class="dp-btn-text">去首页看看</view>
+    </view>
+  </view>
+</view>

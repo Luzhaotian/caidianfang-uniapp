@@ -1,0 +1,149 @@
+{
+  "apis": [
+    {
+      "name": "fetchUrl",
+      "description": "抓取指定 URL 的网页内容，返回文本供 Agent 分析。\n调用前置条件：用户提供了一个 URL 链接。\n【严禁场景】用户未提供 URL 时禁止调用本接口。Agent 禁止猜测 URL 内容，必须先调用本接口获取实际内容。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "用户提供的 URL 链接，必须以 http:// 或 https:// 开头。取值来源：用户原话中的链接。【禁止编造】用户未提供 URL 时禁止填写。"
+          }
+        },
+        "required": ["url"]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "description": "是否成功获取内容" },
+          "content": {
+            "type": "string",
+            "description": "网页文本内容（已去除 HTML 标签，保留纯文本）"
+          },
+          "title": { "type": "string", "description": "网页标题" },
+          "imageUrl": { "type": "string", "description": "网页中的主图 URL（如有）" },
+          "errorMessage": { "type": "string", "description": "失败时的错误信息" }
+        }
+      }
+    },
+    {
+      "name": "saveCustomDish",
+      "description": "将分析确认的菜品信息保存为自定义菜品（业务对象：菜品预览卡片）。\n调用前置条件：Agent 已通过文字分析或 fetchUrl 获取的内容确认这是一道菜品，并已提取出完整的菜品信息。\n【严禁场景】禁止在未确认是菜品的情况下调用本接口；禁止保存缺少 name 字段的菜品。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "菜品名称，必填。取值来源：从用户输入或网页内容中提取。【禁止编造】必须来自实际分析结果。"
+          },
+          "desc": {
+            "type": "string",
+            "description": "菜品简短描述，1-2 句话。取值来源：从分析结果中提取。"
+          },
+          "categoryId": {
+            "type": "number",
+            "description": "菜品分类 ID。1=荤菜, 2=素菜, 3=主食, 4=饮品。根据菜品内容自动判断。"
+          },
+          "image": {
+            "type": "string",
+            "description": "菜品图片 URL。取值来源：从网页内容中提取的图片 URL。无图片时传空字符串。【禁止编造】禁止生成不存在的图片 URL。"
+          },
+          "cookTime": {
+            "type": "string",
+            "description": "烹饪时间，如 '约 30 分钟'。从分析结果中提取，无信息时传空字符串。"
+          },
+          "difficulty": {
+            "type": "string",
+            "description": "难度：'简单' / '中等' / '较难'。从分析结果中推断，无信息时传 '中等'。",
+            "enum": ["简单", "中等", "较难"]
+          },
+          "ingredients": {
+            "type": "array",
+            "description": "原材料列表。从分析结果中提取。",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string", "description": "食材名称" },
+                "amount": { "type": "string", "description": "用量" }
+              }
+            }
+          },
+          "seasonings": {
+            "type": "array",
+            "description": "调料列表。从分析结果中提取。",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string", "description": "调料名称" },
+                "amount": { "type": "string", "description": "用量" }
+              }
+            }
+          },
+          "steps": {
+            "type": "array",
+            "description": "制作步骤。从分析结果中提取。",
+            "items": {
+              "type": "object",
+              "properties": {
+                "step": { "type": "number", "description": "步骤序号，从 1 开始" },
+                "content": { "type": "string", "description": "步骤内容" }
+              }
+            }
+          },
+          "source": {
+            "type": "string",
+            "description": "菜品来源。'text' 表示从文字输入生成，'camera' 表示从拍照识别生成。默认使用 'text'。",
+            "enum": ["text", "camera"]
+          }
+        },
+        "required": ["name", "categoryId"]
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "description": "是否保存成功" },
+          "dishId": { "type": "number", "description": "保存后的菜品 ID" },
+          "dishName": { "type": "string", "description": "菜品名称" },
+          "categoryName": { "type": "string", "description": "分类名称" },
+          "message": { "type": "string", "description": "结果消息" }
+        }
+      },
+      "_meta": { "ui": { "componentPath": "components/dish-preview-card/index" } }
+    },
+    {
+      "name": "listCustomDishes",
+      "description": "列出用户已保存的所有自定义菜品（业务对象：自定义菜品列表卡片）。\n调用前置条件：用户想查看自己添加的自定义菜品。\n【严禁场景】无特殊限制。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "dishes": {
+            "type": "array",
+            "description": "自定义菜品列表",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dishId": { "type": "number", "description": "菜品 ID" },
+                "name": { "type": "string", "description": "菜品名称" },
+                "desc": { "type": "string", "description": "菜品描述" },
+                "categoryName": { "type": "string", "description": "分类名称" },
+                "cookTime": { "type": "string", "description": "烹饪时间" },
+                "difficulty": { "type": "string", "description": "难度" }
+              }
+            }
+          },
+          "total": { "type": "number", "description": "自定义菜品总数" }
+        }
+      },
+      "_meta": { "ui": { "componentPath": "components/custom-dishes-card/index" } }
+    }
+  ],
+  "components": [
+    { "path": "components/dish-preview-card/index" },
+    { "path": "components/custom-dishes-card/index" }
+  ]
+}
