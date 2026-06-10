@@ -49,6 +49,11 @@
             "type": "string",
             "description": "菜品图片 URL。取值来源：从网页内容中提取的图片 URL。无图片时传空字符串。【禁止编造】禁止生成不存在的图片 URL。"
           },
+          "imagePath": {
+            "type": "string",
+            "description": "用户上传的本地图片路径（来自拍照或相册）",
+            "format": "image"
+          },
           "cookTime": {
             "type": "string",
             "description": "烹饪时间，如 '约 30 分钟'。从分析结果中提取，无信息时传空字符串。"
@@ -143,7 +148,13 @@
     }
   ],
   "components": [
-    { "path": "components/dish-preview-card/index" },
-    { "path": "components/custom-dishes-card/index" }
+    {
+      "path": "components/dish-preview-card/index",
+      "relatedPage": "/pages/index/index"
+    },
+    {
+      "path": "components/custom-dishes-card/index",
+      "relatedPage": "/pages/index/index"
+    }
   ]
 }

@@ -1,4 +1,5 @@
 {
+  "lazyCodeLoading": "requiredComponents",
   "subPackages": [
     {
       "root": "skills",
@@ -10,10 +11,11 @@
     "skills": [
       {
         "name": "dish",
-        "description": "菜点坊 AI 识菜：分析用户输入的文字或链接，识别菜品信息并保存到菜单",
+        "description": "菜点坊 AI 识菜：分析用户输入的文字、链接或图片，识别菜品信息并保存到菜单",
         "path": "skills/dish-skill"
       }
     ],
+    "instruction": "AGENTS.md",
     "pageMetadata": "page-meta.json"
   }
 }

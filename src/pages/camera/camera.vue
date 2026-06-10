@@ -142,8 +142,8 @@ function takePhoto() {
       photoPath.value = res.tempImagePath;
       // 保存照片路径到 storage，供 AI 对话时读取
       uni.setStorageSync("quickbite_last_photo", res.tempImagePath);
-      mode.value = "done";
-      uni.showToast({ title: "照片已保存", icon: "success" });
+      // 直接打开 AI 对话，带上照片
+      openAiDialog(res.tempImagePath);
     },
     fail(err) {
       console.error("拍照失败:", err);
@@ -159,10 +159,41 @@ function takePhoto() {
     success(res) {
       photoPath.value = res.tempFilePaths[0];
       uni.setStorageSync("quickbite_last_photo", res.tempFilePaths[0]);
-      mode.value = "done";
-      uni.showToast({ title: "照片已保存", icon: "success" });
+      openAiDialog(res.tempFilePaths[0]);
     },
   });
+  // #endif
+}
+
+// 打开 AI 对话
+function openAiDialog(imagePath: string) {
+  // #ifdef MP-WEIXIN
+  // 检查是否支持 AI 功能
+  if (wx.checkIsSupportAgent) {
+    wx.checkIsSupportAgent({
+      success(res) {
+        if (res.isSupport) {
+          // 打开 AI 对话，带上照片路径
+          wx.openAgent({
+            followUpMessage: `请识别这张照片中的菜品：${imagePath}`,
+          });
+        } else {
+          uni.showToast({ title: "当前设备不支持 AI 对话", icon: "none" });
+          mode.value = "done";
+        }
+      },
+      fail() {
+        // 降级：显示引导页
+        mode.value = "done";
+      },
+    });
+  } else {
+    // 无 checkIsSupportAgent 接口，降级显示引导页
+    mode.value = "done";
+  }
+  // #endif
+  // #ifndef MP-WEIXIN
+  mode.value = "done";
   // #endif
 }
 

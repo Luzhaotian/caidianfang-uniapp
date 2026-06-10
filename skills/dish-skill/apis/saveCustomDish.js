@@ -18,6 +18,7 @@ async function saveCustomDish(params = {}) {
       categoryId,
       desc,
       image,
+      imagePath,
       cookTime,
       difficulty,
       ingredients,
@@ -46,18 +47,21 @@ async function saveCustomDish(params = {}) {
       };
     }
 
-    // 构建菜品对象
+    // 构建菜品对象（优先使用 imagePath 拍照路径）
+    const dishImage = (imagePath || image || "").trim();
+    const dishSource = imagePath ? "camera" : source || "text";
+
     const dish = {
       name: name.trim(),
       categoryId: categoryId,
       desc: (desc || "").trim(),
-      image: (image || "").trim(),
+      image: dishImage,
       cookTime: (cookTime || "").trim(),
       difficulty: difficulty || "中等",
       ingredients: Array.isArray(ingredients) ? ingredients : [],
       seasonings: Array.isArray(seasonings) ? seasonings : [],
       steps: Array.isArray(steps) ? steps : [],
-      source: source || "text",
+      source: dishSource,
     };
 
     const result = addCustomDish(dish);

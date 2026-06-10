@@ -9,6 +9,21 @@
       "path": "pages/camera/camera",
       "name": "AI 拍照识菜",
       "description": "拍照识别菜品，自动保存到菜单"
+    },
+    {
+      "path": "pages/detail/detail",
+      "name": "菜品详情",
+      "description": "查看菜品的原材料、调料和制作步骤",
+      "query": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "菜品的唯一标识符"
+          }
+        },
+        "required": ["id"]
+      }
     }
   ]
 }
