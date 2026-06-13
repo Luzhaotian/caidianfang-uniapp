@@ -1,0 +1,23 @@
+{
+  "_comment": "tabBar 配置备份，后续 AI 功能启用时恢复到 src/pages.json",
+  "tabBar": {
+    "color": "#9ca3af",
+    "selectedColor": "#d97706",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "菜谱",
+        "iconPath": "static/images/tab-menu.png",
+        "selectedIconPath": "static/images/tab-menu-active.png"
+      },
+      {
+        "pagePath": "pages/camera/camera",
+        "text": "AI识菜",
+        "iconPath": "static/images/tab-camera.png",
+        "selectedIconPath": "static/images/tab-camera-active.png"
+      }
+    ]
+  }
+}

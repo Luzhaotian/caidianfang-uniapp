@@ -4,10 +4,12 @@
       <view class="header-content">
         <text class="title">我的菜谱</text>
         <text class="subtitle">轻松做饭·分享灵感</text>
+        <!-- AI 入口暂时隐藏
         <view class="ai-entry" @click="openAiEntry">
           <text class="ai-entry-icon">🤖</text>
           <text class="ai-entry-text">AI 识菜 · 输入文字或链接自动添加菜品</text>
         </view>
+        -->
       </view>
     </view>
 
@@ -318,15 +320,16 @@ function goDetail(id: number) {
   uni.navigateTo({ url: `/pages/detail/detail?id=${id}` });
 }
 
-function openAiEntry() {
-  uni.showModal({
-    title: "🤖 AI 识菜使用说明",
-    content:
-      "1. 点击小程序右上角「...」\n2. 选择「AI 对话」\n3. 输入菜品描述或链接\n\n例如：\n• 帮我加一道番茄炒蛋\n• https://xxx.com/红烧肉做法\n• 看看我加的菜",
-    showCancel: false,
-    confirmText: "我知道了",
-  });
-}
+// AI 入口弹窗（功能启用后取消注释）
+// function openAiEntry() {
+//   uni.showModal({
+//     title: "🤖 AI 识菜使用说明",
+//     content:
+//       "1. 点击小程序右上角「...」\n2. 选择「AI 对话」\n3. 输入菜品描述或链接\n\n例如：\n• 帮我加一道番茄炒蛋\n• https://xxx.com/红烧肉做法\n• 看看我加的菜",
+//     showCancel: false,
+//     confirmText: "我知道了",
+//   });
+// }
 
 // 页面显示时刷新自定义菜品（从 SKILL 写入的 storage 中读取）
 onShow(() => {

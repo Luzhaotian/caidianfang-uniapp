@@ -5,8 +5,13 @@
       <text class="nav-title">AI 拍照识菜</text>
     </view>
 
-    <!-- 拍照模式 -->
-    <view v-if="mode === 'camera'" class="camera-area">
+    <!-- AI 识菜功能开发中 -->
+    <view v-if="mode === 'camera'" class="coming-area">
+      <text class="coming-icon">🚧</text>
+      <text class="coming-title">功能开发中</text>
+      <text class="coming-desc">AI 拍照识菜功能正在开发中，敬请期待</text>
+
+      <!-- 原功能代码（暂时注释）
       <camera
         v-if="hasCameraPermission && pageVisible"
         :key="cameraKey"
@@ -20,7 +25,6 @@
         </cover-view>
       </camera>
 
-      <!-- 无权限时显示提示 -->
       <view v-else class="no-permission">
         <text class="no-permission-icon">📷</text>
         <text class="no-permission-text">需要相机权限才能拍照识菜</text>
@@ -29,12 +33,12 @@
         </view>
       </view>
 
-      <!-- 底部拍照按钮 -->
       <view class="camera-bottom">
         <view class="capture-btn" @click="takePhoto">
           <view class="capture-btn-inner"></view>
         </view>
       </view>
+      -->
     </view>
 
     <!-- 拍照完成 - 引导去 AI 对话 -->
@@ -105,17 +109,18 @@ function checkCameraPermission() {
   // #endif
 }
 
-function requestCameraPermission() {
-  // #ifdef MP-WEIXIN
-  uni.openSetting({
-    success(res) {
-      if (res.authSetting["scope.camera"]) {
-        hasCameraPermission.value = true;
-      }
-    },
-  });
-  // #endif
-}
+// AI 功能启用后取消注释
+// function requestCameraPermission() {
+//   // #ifdef MP-WEIXIN
+//   uni.openSetting({
+//     success(res) {
+//       if (res.authSetting["scope.camera"]) {
+//         hasCameraPermission.value = true;
+//       }
+//     },
+//   });
+//   // #endif
+// }
 
 onShow(() => {
   pageVisible.value = true;
@@ -131,71 +136,42 @@ onHide(() => {
   pageVisible.value = false;
 });
 
-// ========== 拍照 ==========
+// ========== 拍照（AI 功能启用后取消注释）==========
 
-function takePhoto() {
-  // #ifdef MP-WEIXIN
-  const camera = uni.createCameraContext();
-  camera.takePhoto({
-    quality: "high",
-    success(res) {
-      photoPath.value = res.tempImagePath;
-      // 保存照片路径到 storage，供 AI 对话时读取
-      uni.setStorageSync("quickbite_last_photo", res.tempImagePath);
-      // 直接打开 AI 对话，带上照片
-      openAiDialog(res.tempImagePath);
-    },
-    fail(err) {
-      console.error("拍照失败:", err);
-      uni.showToast({ title: "拍照失败", icon: "none" });
-    },
-  });
-  // #endif
-  // #ifndef MP-WEIXIN
-  uni.chooseImage({
-    count: 1,
-    sizeType: ["compressed"],
-    sourceType: ["camera"],
-    success(res) {
-      photoPath.value = res.tempFilePaths[0];
-      uni.setStorageSync("quickbite_last_photo", res.tempFilePaths[0]);
-      openAiDialog(res.tempFilePaths[0]);
-    },
-  });
-  // #endif
-}
+// function takePhoto() {
+//   // #ifdef MP-WEIXIN
+//   const camera = uni.createCameraContext();
+//   camera.takePhoto({
+//     quality: "high",
+//     success(res) {
+//       photoPath.value = res.tempImagePath;
+//       uni.setStorageSync("quickbite_last_photo", res.tempImagePath);
+//       mode.value = "done";
+//     },
+//     fail(err) {
+//       console.error("拍照失败:", err);
+//       uni.showToast({ title: "拍照失败", icon: "none" });
+//     },
+//   });
+//   // #endif
+//   // #ifndef MP-WEIXIN
+//   uni.chooseImage({
+//     count: 1,
+//     sizeType: ["compressed"],
+//     sourceType: ["camera"],
+//     success(res) {
+//       photoPath.value = res.tempFilePaths[0];
+//       uni.setStorageSync("quickbite_last_photo", res.tempFilePaths[0]);
+//       mode.value = "done";
+//     },
+//   });
+//   // #endif
+// }
 
-// 打开 AI 对话
-function openAiDialog(imagePath: string) {
-  // #ifdef MP-WEIXIN
-  // 检查是否支持 AI 功能
-  if (wx.checkIsSupportAgent) {
-    wx.checkIsSupportAgent({
-      success(res) {
-        if (res.isSupport) {
-          // 打开 AI 对话，带上照片路径
-          wx.openAgent({
-            followUpMessage: `请识别这张照片中的菜品：${imagePath}`,
-          });
-        } else {
-          uni.showToast({ title: "当前设备不支持 AI 对话", icon: "none" });
-          mode.value = "done";
-        }
-      },
-      fail() {
-        // 降级：显示引导页
-        mode.value = "done";
-      },
-    });
-  } else {
-    // 无 checkIsSupportAgent 接口，降级显示引导页
-    mode.value = "done";
-  }
-  // #endif
-  // #ifndef MP-WEIXIN
-  mode.value = "done";
-  // #endif
-}
+// 打开 AI 对话（AI 功能启用后取消注释）
+// function openAiDialog(_imagePath: string) {
+//   mode.value = "done";
+// }
 
 // ========== 操作 ==========
 
@@ -233,6 +209,31 @@ function goToMenu() {
   font-size: 34rpx;
   font-weight: 700;
   color: #f5f5f4;
+}
+
+/* ===== 功能开发中 ===== */
+.coming-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+}
+
+.coming-icon {
+  font-size: 80rpx;
+}
+
+.coming-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #f5f5f4;
+}
+
+.coming-desc {
+  font-size: 26rpx;
+  color: #a8a29e;
 }
 
 /* ===== 拍照模式 ===== */
