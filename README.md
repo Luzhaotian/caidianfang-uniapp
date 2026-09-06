@@ -2,6 +2,12 @@
 
 简约便捷的微信小程序菜单分享工具，快速点餐，一键分享给好友。
 
+<p align="center">
+  <img src="docs/assets/miniprogram-qrcode.jpg" alt="菜点坊微信小程序码" width="280" />
+</p>
+
+<p align="center">微信扫码体验小程序</p>
+
 ## 项目介绍
 
 菜点坊是一款面向餐饮场景的微信小程序，帮助用户：
